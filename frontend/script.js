@@ -573,33 +573,182 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// ──── SEGMENTED CONTROL / FILTER LOGIC ────
-const filterButtonsArr = Array.from(filterButtons);
-const segmentedControl = document.querySelector(".segmented-control");
+// ──── IMPORT MORPH SLIDER (REACT BITS COMPONENT) ────
+import { createMorphSlider } from "./MorphSlider.js";
 
+// ═══════════════════════════════════════════════════════════════
+// SLIDING GLASS INDICATOR PILL (ROLLING & BI-DIRECTIONAL STRETCH)
+// ═══════════════════════════════════════════════════════════════
+const slidingPill = document.querySelector("#segSlidingPill");
+const segmentedControl = document.querySelector(".segmented-control");
+const filterButtonsArr = Array.from(filterButtons);
+
+function updateSlidingPill(targetBtn, stretchDir = 0) {
+  if (!slidingPill || !targetBtn) return;
+
+  const btnLeft = targetBtn.offsetLeft;
+  const btnWidth = targetBtn.offsetWidth;
+  const STRETCH_AMOUNT = 16; // Organic stretch distance
+
+  if (stretchDir > 0) {
+    // Hovering to the RIGHT of active button: pill stretches right
+    slidingPill.style.transform = `translateX(${btnLeft}px)`;
+    slidingPill.style.width = `${btnWidth + STRETCH_AMOUNT}px`;
+    slidingPill.style.boxShadow = "0 8px 24px rgba(63, 113, 251, 0.52)";
+  } else if (stretchDir < 0) {
+    // Hovering to the LEFT of active button: pill stretches left
+    slidingPill.style.transform = `translateX(${btnLeft - STRETCH_AMOUNT}px)`;
+    slidingPill.style.width = `${btnWidth + STRETCH_AMOUNT}px`;
+    slidingPill.style.boxShadow = "0 8px 24px rgba(63, 113, 251, 0.52)";
+  } else {
+    // Normal exact bounds of the active button
+    slidingPill.style.transform = `translateX(${btnLeft}px)`;
+    slidingPill.style.width = `${btnWidth}px`;
+    slidingPill.style.boxShadow = "0 6px 20px rgba(63, 113, 251, 0.4)";
+  }
+}
+
+// Initial position after render
+function syncInitialPill() {
+  const activeBtn = document.querySelector(".seg-btn.active") || filterButtonsArr[0];
+  if (activeBtn) {
+    updateSlidingPill(activeBtn, 0);
+  }
+}
+requestAnimationFrame(syncInitialPill);
+window.addEventListener("load", syncInitialPill);
+window.addEventListener("resize", syncInitialPill);
+
+// ──── MORPH SLIDER SHOWCASE ITEMS (5 CATEGORY SLIDES) ────
+const MORPH_SLIDER_ITEMS = [
+  {
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
+    caption: "✦ Все проекты · 9 передовых систем Shuaq (Full-stack SaaS, AI Vision, IoT & Extensions)",
+    filter: "all"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+    caption: "🌐 Web & SaaS · Qunar & WEST Enterprise Logistics (FastAPI, React, PostgreSQL)",
+    filter: "web"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop",
+    caption: "🧠 AI & Vision · Smart-Garbage & Tumar (YOLOv8, OpenCV, Real-Time AI Stream)",
+    filter: "ai"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+    caption: "⚡ IoT & Hardware · ArchaeoScan & Smart Sorting (ESP32-CAM, Sensors, WebSockets)",
+    filter: "iot"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop",
+    caption: "🧩 Extensions · Damumed AI Medical Assistant (Manifest V3, Content Scripts, RPA)",
+    filter: "extension"
+  }
+];
+
+// Initialize MorphSlider in #morphSliderRoot
+const morphRoot = document.querySelector("#morphSliderRoot");
+let morphSlider = null;
+let isSyncingFromSlider = false;
+
+if (morphRoot) {
+  morphSlider = createMorphSlider(morphRoot, {
+    items: MORPH_SLIDER_ITEMS,
+    startIndex: 0,
+    transition: "melt",
+    duration: 1.1,
+    ease: "power2.inOut",
+    intensity: 0.55,
+    scale: 2.4,
+    aberration: 0.35,
+    drift: 0.4,
+    autoplay: false,
+    radius: 20,
+    overlayColor: "#05070e",
+    showCaptions: true,
+    showControls: true,
+    showIndicators: true,
+    onSlideChange: (index) => {
+      if (isSyncingFromSlider) return;
+      isSyncingFromSlider = true;
+
+      const targetFilter = MORPH_SLIDER_ITEMS[index]?.filter;
+      if (targetFilter) {
+        const targetBtn = filterButtonsArr[index];
+        filterButtons.forEach((btn) => {
+          if (btn.dataset.filter === targetFilter) {
+            btn.classList.add("active");
+            btn.setAttribute("aria-selected", "true");
+          } else {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-selected", "false");
+          }
+        });
+
+        if (targetBtn) {
+          updateSlidingPill(targetBtn, 0);
+        }
+
+        renderProjectCards(targetFilter);
+      }
+
+      setTimeout(() => {
+        isSyncingFromSlider = false;
+      }, 60);
+    }
+  });
+}
+
+// Hover stretch handling (both right AND left: "без разницы")
 filterButtons.forEach((button, index) => {
+  button.addEventListener("mouseenter", () => {
+    const activeBtn = document.querySelector(".seg-btn.active");
+    if (!activeBtn) return;
+    const activeIndex = filterButtonsArr.indexOf(activeBtn);
+
+    if (index > activeIndex) {
+      // Hovered item is to the RIGHT -> stretch pill right
+      updateSlidingPill(activeBtn, 1);
+    } else if (index < activeIndex) {
+      // Hovered item is to the LEFT -> stretch pill left
+      updateSlidingPill(activeBtn, -1);
+    } else {
+      // Hovering active button itself -> normal resting size
+      updateSlidingPill(activeBtn, 0);
+    }
+  });
+
+  // Clicking a button: smoothly roll over ("плавно туда перекатиться")
   button.addEventListener("click", () => {
     filterButtons.forEach((btn) => {
-      btn.classList.remove("active", "stretch-right");
+      btn.classList.remove("active");
       btn.setAttribute("aria-selected", "false");
     });
 
     button.classList.add("active");
     button.setAttribute("aria-selected", "true");
 
+    // Smoothly roll pill over to clicked button
+    updateSlidingPill(button, 0);
+
     const filterValue = button.dataset.filter;
     renderProjectCards(filterValue);
-  });
 
-  // Elastic stretch: active colored button expands slightly to the right ONLY when hovering choices to its right
-  button.addEventListener("mouseenter", () => {
-    const activeBtn = document.querySelector(".seg-btn.active");
-    if (!activeBtn) return;
-    const activeIndex = filterButtonsArr.indexOf(activeBtn);
-    if (index > activeIndex) {
-      activeBtn.classList.add("stretch-right");
-    } else {
-      activeBtn.classList.remove("stretch-right");
+    // Trigger GPU displacement "melt" morph transition on MorphSlider
+    if (morphSlider && !isSyncingFromSlider) {
+      morphSlider.goToIndex(index);
+    }
+
+    // Animate cards appearance with GSAP
+    if (window.gsap) {
+      const visibleCards = document.querySelectorAll(".project-card:not(.hidden)");
+      window.gsap.fromTo(
+        visibleCards,
+        { opacity: 0, y: 18, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.04, ease: "power2.out" }
+      );
     }
   });
 });
@@ -608,7 +757,7 @@ if (segmentedControl) {
   segmentedControl.addEventListener("mouseleave", () => {
     const activeBtn = document.querySelector(".seg-btn.active");
     if (activeBtn) {
-      activeBtn.classList.remove("stretch-right");
+      updateSlidingPill(activeBtn, 0);
     }
   });
 }
@@ -627,6 +776,7 @@ window.addEventListener("scroll", () => {
     header.style.background = "";
   }
 });
+
 
 
 
