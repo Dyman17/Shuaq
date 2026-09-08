@@ -524,7 +524,11 @@ if (orderForm) {
     };
 
     try {
-      const response = await fetch("/api/orders", {
+      const apiEndpoint = window.SHUAQ_API_URL
+        ? `${window.SHUAQ_API_URL.replace(/\/+$/, "")}/api/orders`
+        : "/api/orders";
+
+      const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderPayload)

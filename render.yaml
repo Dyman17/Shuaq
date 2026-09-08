@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: shuaq-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: TELEGRAM_MANAGER_USERNAME
+        value: dyman_kz
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
