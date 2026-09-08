@@ -605,7 +605,7 @@ function updateSlidingPill(targetBtn, isRolling = false, fromBtn = null) {
     slidingPill._rollTimer = setTimeout(() => {
       slidingPill.classList.remove("rolling-right", "rolling-left");
       slidingPill.style.transform = `translate3d(${targetX}px, 0, 0)`;
-    }, 460);
+    }, 640);
   } else {
     slidingPill.style.setProperty("--pill-x", `${targetX}px`);
     slidingPill.style.width = `${targetW}px`;
