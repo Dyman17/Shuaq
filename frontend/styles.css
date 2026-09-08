@@ -533,117 +533,48 @@ body {
   gap: 6px;
   padding: 6px;
   border-radius: 9999px;
-  overflow: visible;
+  isolation: isolate;
 }
 
-/* Dynamic Rolling & Squashing Pill ("Сдутая шина" - ультра-плавная физика) */
-.seg-sliding-pill {
+/* Dynamic Sliding & Elastic Indicator Pill */
+.seg-sliding-indicator {
   position: absolute;
   top: 6px;
-  left: 0;
-  height: calc(100% - 12px);
+  left: 6px;
   border-radius: 9999px;
   background: var(--shuaq-pill-gradient);
-  background-size: 250% 100%;
-  background-position: 0% 50%;
-  box-shadow: 0 4px 18px rgba(63, 113, 251, 0.42);
+  box-shadow: 0 4px 16px rgba(63, 113, 251, 0.38);
   pointer-events: none;
   z-index: 1;
-  transform-origin: 50% 85%; /* Pivot near the ground like a rolling tire */
-  transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.64s cubic-bezier(0.16, 1, 0.3, 1),
-              background-position 0.64s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s ease;
-  will-change: transform, width, background-position;
+  /* Fluid spring roll / slide transition */
+  transition: left 0.4s cubic-bezier(0.34, 1.25, 0.64, 1),
+              width 0.36s cubic-bezier(0.34, 1.25, 0.64, 1),
+              top 0.3s ease,
+              height 0.3s ease,
+              transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.28s ease;
+  will-change: left, width, transform;
 }
 
-/* Hover stretch: rightwards (smooth organic stretch) */
-.seg-sliding-pill.stretch-right {
-  transform: translate3d(var(--pill-x, 0px), 0, 0) scaleX(1.12) skewX(-3deg) !important;
-  transform-origin: 15% 85% !important;
-  box-shadow: 0 6px 24px rgba(63, 113, 251, 0.55);
+.seg-sliding-indicator.is-rolling {
+  box-shadow: 0 8px 24px rgba(63, 113, 251, 0.52);
 }
 
-/* Hover stretch: leftwards (smooth organic stretch) */
-.seg-sliding-pill.stretch-left {
-  transform: translate3d(calc(var(--pill-x, 0px) - 12px), 0, 0) scaleX(1.12) skewX(3deg) !important;
-  transform-origin: 85% 85% !important;
-  box-shadow: 0 6px 24px rgba(63, 113, 251, 0.55);
+/* Elastic stretch to the RIGHT when hovering choices to the right */
+.seg-sliding-indicator.stretch-right {
+  transform-origin: left center;
+  transform: scaleX(1.12);
+  box-shadow: 0 6px 22px rgba(63, 113, 251, 0.48);
 }
 
-/* Rolling animation to the RIGHT (smooth deflated tire roll & gradient flow) */
-.seg-sliding-pill.rolling-right {
-  animation: tireRollRight 0.64s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Rolling animation to the LEFT (smooth deflated tire roll & gradient flow) */
-.seg-sliding-pill.rolling-left {
-  animation: tireRollLeft 0.64s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes tireRollRight {
-  0% {
-    transform: translate3d(var(--from-x), 0, 0) scale(1, 1) rotate(0deg) skewX(0deg);
-    background-position: 0% 50%;
-  }
-  25% {
-    /* Gentle deflation & initial torque */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.28), 0, 0)
-               scale(1.18, 0.84) rotate(4.5deg) skewX(-7deg);
-    background-position: 30% 50%;
-  }
-  60% {
-    /* Silky fluid roll & liquid gradient flow across track */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.78), 0, 0)
-               scale(1.22, 0.82) rotate(6deg) skewX(-9deg);
-    background-position: 75% 50%;
-  }
-  85% {
-    /* Soft arrival cushioning against target */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.98), 0, 0)
-               scale(0.96, 1.04) rotate(-1.5deg) skewX(2deg);
-    background-position: 96% 50%;
-  }
-  100% {
-    /* Smooth settlement back to round resting capsule */
-    transform: translate3d(var(--to-x), 0, 0) scale(1, 1) rotate(0deg) skewX(0deg);
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes tireRollLeft {
-  0% {
-    transform: translate3d(var(--from-x), 0, 0) scale(1, 1) rotate(0deg) skewX(0deg);
-    background-position: 100% 50%;
-  }
-  25% {
-    /* Gentle deflation & initial torque */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.28), 0, 0)
-               scale(1.18, 0.84) rotate(-4.5deg) skewX(7deg);
-    background-position: 70% 50%;
-  }
-  60% {
-    /* Silky fluid roll & liquid gradient flow across track */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.78), 0, 0)
-               scale(1.22, 0.82) rotate(-6deg) skewX(9deg);
-    background-position: 25% 50%;
-  }
-  85% {
-    /* Soft arrival cushioning against target */
-    transform: translate3d(calc(var(--from-x) + (var(--to-x) - var(--from-x)) * 0.98), 0, 0)
-               scale(0.96, 1.04) rotate(1.5deg) skewX(-2deg);
-    background-position: 4% 50%;
-  }
-  100% {
-    /* Smooth settlement back to round resting capsule */
-    transform: translate3d(var(--to-x), 0, 0) scale(1, 1) rotate(0deg) skewX(0deg);
-    background-position: 0% 50%;
-  }
+/* Elastic stretch to the LEFT when hovering choices to the left */
+.seg-sliding-indicator.stretch-left {
+  transform-origin: right center;
+  transform: scaleX(1.12);
+  box-shadow: 0 6px 22px rgba(63, 113, 251, 0.48);
 }
 
 .seg-btn {
-  position: relative;
-  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -656,19 +587,21 @@ body {
   font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
-  transition: color 0.22s ease, background 0.22s ease;
+  transition: color 0.24s ease;
+  position: relative;
+  z-index: 2;
+  user-select: none;
 }
 
 .seg-btn:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.35);
 }
 
 .seg-btn.active {
   color: #ffffff;
+  font-weight: 700;
   background: transparent;
   box-shadow: none;
-  font-weight: 700;
 }
 
 .seg-dot {
@@ -676,7 +609,13 @@ body {
   height: 6px;
   border-radius: 50%;
   background: #ffffff;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: all 0.25s ease;
+}
+
+.seg-btn:not(.active) .seg-dot {
+  width: 0;
+  opacity: 0;
+  margin-right: -7px;
 }
 
 .seg-count {
@@ -686,7 +625,7 @@ body {
   border-radius: 9999px;
   background: rgba(0, 0, 0, 0.08);
   font-weight: 700;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition: all 0.24s ease;
 }
 
 .seg-btn.active .seg-count {

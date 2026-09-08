@@ -573,69 +573,50 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// ──── SEGMENTED CONTROL / SLIDING PILL LOGIC (DEFLATED TIRE ROLL & TWO-WAY STRETCH) ────
+// ──── SEGMENTED CONTROL / FLUID SLIDING PILL & BIDIRECTIONAL STRETCH ────
 const filterButtonsArr = Array.from(filterButtons);
 const segmentedControl = document.querySelector(".segmented-control");
-const slidingPill = document.querySelector("#segSlidingPill");
+const slidingIndicator = document.querySelector("#segSlidingIndicator");
 
-function updateSlidingPill(targetBtn, isRolling = false, fromBtn = null) {
-  if (!slidingPill || !targetBtn) return;
+function updateSlidingIndicator(targetBtn, immediate = false) {
+  if (!slidingIndicator || !targetBtn || !segmentedControl) return;
 
-  const targetX = targetBtn.offsetLeft;
-  const targetW = targetBtn.offsetWidth;
+  const controlRect = segmentedControl.getBoundingClientRect();
+  const btnRect = targetBtn.getBoundingClientRect();
 
-  if (isRolling && fromBtn) {
-    const fromX = fromBtn.offsetLeft;
-    const direction = targetX >= fromX ? "right" : "left";
+  const left = btnRect.left - controlRect.left;
+  const top = btnRect.top - controlRect.top;
+  const width = btnRect.width;
+  const height = btnRect.height;
 
-    // Set animation keyframe positions
-    slidingPill.style.setProperty("--from-x", `${fromX}px`);
-    slidingPill.style.setProperty("--to-x", `${targetX}px`);
-    slidingPill.style.setProperty("--pill-x", `${targetX}px`);
-    slidingPill.style.width = `${targetW}px`;
-
-    // Reset previous roll/stretch state and trigger reflow
-    slidingPill.classList.remove("rolling-right", "rolling-left", "stretch-right", "stretch-left");
-    void slidingPill.offsetWidth;
-
-    const rollClass = direction === "right" ? "rolling-right" : "rolling-left";
-    slidingPill.classList.add(rollClass);
-
-    clearTimeout(slidingPill._rollTimer);
-    slidingPill._rollTimer = setTimeout(() => {
-      slidingPill.classList.remove("rolling-right", "rolling-left");
-      slidingPill.style.transform = `translate3d(${targetX}px, 0, 0)`;
-    }, 640);
+  if (immediate) {
+    const prevTransition = slidingIndicator.style.transition;
+    slidingIndicator.style.transition = "none";
+    slidingIndicator.style.left = `${left}px`;
+    slidingIndicator.style.top = `${top}px`;
+    slidingIndicator.style.width = `${width}px`;
+    slidingIndicator.style.height = `${height}px`;
+    slidingIndicator.offsetHeight; // force reflow
+    slidingIndicator.style.transition = prevTransition;
   } else {
-    slidingPill.style.setProperty("--pill-x", `${targetX}px`);
-    slidingPill.style.width = `${targetW}px`;
-    slidingPill.style.transform = `translate3d(${targetX}px, 0, 0)`;
+    slidingIndicator.style.left = `${left}px`;
+    slidingIndicator.style.top = `${top}px`;
+    slidingIndicator.style.width = `${width}px`;
+    slidingIndicator.style.height = `${height}px`;
   }
 }
 
-// Initial positioning of sliding pill
-const activeInitialBtn = document.querySelector(".seg-btn.active") || filterButtons[0];
-if (activeInitialBtn) {
-  updateSlidingPill(activeInitialBtn, false);
+// Initial positioning on the active button
+const initialActiveBtn = document.querySelector(".seg-btn.active") || filterButtonsArr[0];
+if (initialActiveBtn) {
+  updateSlidingIndicator(initialActiveBtn, true);
+  window.addEventListener("load", () => updateSlidingIndicator(initialActiveBtn, true));
 }
-if (document.fonts) {
-  document.fonts.ready.then(() => {
-    const cur = document.querySelector(".seg-btn.active");
-    if (cur) updateSlidingPill(cur, false);
-  });
-}
-window.addEventListener("resize", () => {
-  const cur = document.querySelector(".seg-btn.active");
-  if (cur) updateSlidingPill(cur, false);
-});
 
-filterButtons.forEach((button, index) => {
-  // Click: physical deflated tire roll & gradient flow to destination
+filterButtonsArr.forEach((button, index) => {
+  // Click: smooth roll & slide transition
   button.addEventListener("click", () => {
-    const prevActive = document.querySelector(".seg-btn.active");
-    if (button === prevActive) return;
-
-    filterButtons.forEach((btn) => {
+    filterButtonsArr.forEach((btn) => {
       btn.classList.remove("active");
       btn.setAttribute("aria-selected", "false");
     });
@@ -643,41 +624,49 @@ filterButtons.forEach((button, index) => {
     button.classList.add("active");
     button.setAttribute("aria-selected", "true");
 
-    updateSlidingPill(button, true, prevActive);
+    if (slidingIndicator) {
+      slidingIndicator.classList.remove("stretch-right", "stretch-left");
+      slidingIndicator.classList.add("is-rolling");
+      updateSlidingIndicator(button);
+      setTimeout(() => {
+        slidingIndicator.classList.remove("is-rolling");
+      }, 420);
+    }
 
     const filterValue = button.dataset.filter;
     renderProjectCards(filterValue);
   });
 
-  // Two-way hover stretch: stretches towards hovered item whether on the RIGHT or LEFT
+  // Hover: stretch right if choice is on the right, stretch left if choice is on the left
   button.addEventListener("mouseenter", () => {
     const activeBtn = document.querySelector(".seg-btn.active");
-    if (!activeBtn || !slidingPill) return;
-    if (slidingPill.classList.contains("rolling-right") || slidingPill.classList.contains("rolling-left")) return;
-
+    if (!activeBtn || !slidingIndicator) return;
     const activeIndex = filterButtonsArr.indexOf(activeBtn);
+
+    slidingIndicator.classList.remove("stretch-right", "stretch-left");
+
     if (index > activeIndex) {
-      // Hovered option is to the RIGHT
-      slidingPill.classList.remove("stretch-left");
-      slidingPill.classList.add("stretch-right");
+      slidingIndicator.classList.add("stretch-right");
     } else if (index < activeIndex) {
-      // Hovered option is to the LEFT
-      slidingPill.classList.remove("stretch-right");
-      slidingPill.classList.add("stretch-left");
-    } else {
-      // Hovered on active button itself
-      slidingPill.classList.remove("stretch-right", "stretch-left");
+      slidingIndicator.classList.add("stretch-left");
     }
   });
 });
 
 if (segmentedControl) {
   segmentedControl.addEventListener("mouseleave", () => {
-    if (slidingPill) {
-      slidingPill.classList.remove("stretch-right", "stretch-left");
+    if (slidingIndicator) {
+      slidingIndicator.classList.remove("stretch-right", "stretch-left");
     }
   });
 }
+
+window.addEventListener("resize", () => {
+  const currentActive = document.querySelector(".seg-btn.active");
+  if (currentActive) {
+    updateSlidingIndicator(currentActive, true);
+  }
+});
 
 // ──── INITIALIZE ────
 renderProjectCards();
