@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none" width="100%" height="100%">
+  <defs>
+    <!-- Background glow filter -->
+    <filter id="shuaq-glow" x="-30%" y="-30%" width="160%" height="160%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Inner soft shadow for 3D depth -->
+    <filter id="shuaq-depth" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#080B11" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Segment 1: Cyan to Deep Blue (Top Curve) -->
+    <linearGradient id="grad-top-loop" x1="15%" y1="10%" x2="85%" y2="70%">
+      <stop offset="0%" stop-color="#84D2FC" />
+      <stop offset="25%" stop-color="#27B9FD" />
+      <stop offset="65%" stop-color="#3F71FB" />
+      <stop offset="100%" stop-color="#5CA0FD" />
+    </linearGradient>
+
+    <!-- Segment 2: Deep Blue through Violet to Magenta (Center Diagonal S-twist) -->
+    <linearGradient id="grad-twist" x1="10%" y1="20%" x2="90%" y2="80%">
+      <stop offset="0%" stop-color="#3F71FB" />
+      <stop offset="30%" stop-color="#99A1F5" />
+      <stop offset="60%" stop-color="#A075F9" />
+      <stop offset="100%" stop-color="#D59AE8" />
+    </linearGradient>
+
+    <!-- Segment 3: Magenta to Soft Pink and Warm Orange (Bottom Loop) -->
+    <linearGradient id="grad-bottom-loop" x1="15%" y1="30%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#D59AE8" />
+      <stop offset="35%" stop-color="#FAB5C5" />
+      <stop offset="75%" stop-color="#FDAF65" />
+      <stop offset="100%" stop-color="#FDDD96" />
+    </linearGradient>
+
+    <!-- Soft 3D Specular Highlight -->
+    <linearGradient id="specular-light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Ambient colored back-glow -->
+    <radialGradient id="ambient-radial" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A075F9" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#3F71FB" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#080B11" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient diffuse glow behind the mark -->
+  <circle cx="60" cy="60" r="50" fill="url(#ambient-radial)" />
+
+  <!-- ══════ 3D FLUID S-MARK ══════ -->
+  <g id="logo-mark" filter="url(#shuaq-depth)">
+    <!-- Bottom loop ribbon layer (passes behind diagonal) -->
+    <path d="M52 58 C62 66, 88 78, 88 92 C88 106, 70 114, 52 114 C32 114, 18 100, 20 84 C21 72, 32 66, 42 66 C48 66, 52 69, 52 69" 
+          stroke="url(#grad-bottom-loop)" 
+          stroke-width="16" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none" />
+
+    <!-- Central S-twist flowing through space -->
+    <path d="M78 28 C74 24, 66 18, 54 18 C36 18, 22 28, 22 42 C22 56, 40 64, 56 70 C72 76, 88 84, 88 98 C88 110, 74 116, 56 116" 
+          stroke="url(#grad-twist)" 
+          stroke-width="15" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none" />
+
+    <!-- Top loop ribbon layer (overlaps forward) -->
+    <path d="M62 68 C50 62, 22 52, 22 36 C22 20, 40 12, 58 12 C78 12, 92 26, 92 40 C92 50, 84 58, 72 64" 
+          stroke="url(#grad-top-loop)" 
+          stroke-width="16" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none" />
+
+    <!-- 3D Specular highlight ridge along top crest -->
+    <path d="M38 18 C46 14, 58 13, 70 16 C82 20, 88 28, 88 38" 
+          stroke="url(#specular-light)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none" 
+          opacity="0.75" />
+
+    <!-- Warm golden solar accent pip / light particle at loop core -->
+    <circle cx="82" cy="98" r="4.5" fill="#FDDD96" filter="url(#shuaq-glow)" />
+    <circle cx="28" cy="30" r="3.5" fill="#84D2FC" filter="url(#shuaq-glow)" />
+  </g>
+
+  <!-- ══════ TYPOGRAPHY: SHUAQ ══════ -->
+  <g id="logo-text" transform="translate(136, 74)">
+    <text font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" 
+          font-size="44" 
+          font-weight="800" 
+          letter-spacing="-0.035em" 
+          fill="#F8FAFC">
+      Shuaq
+    </text>
+    
+    <!-- Subtitle descriptor -->
+    <text x="3" y="24" 
+          font-family="'JetBrains Mono', monospace" 
+          font-size="11.5" 
+          font-weight="600" 
+          letter-spacing="0.26em" 
+          fill="#94A3B8"
+          text-transform="uppercase">
+      STUDIO · AI · TECH
+    </text>
+  </g>
+</svg>
