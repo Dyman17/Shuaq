@@ -292,15 +292,15 @@ function renderProjectCards(activeFilter = "all") {
               <!-- Mock Metrics Row -->
               <div class="viz-metrics-grid">
                 ${project.viz.metrics
-                  .map(
-                    (m) => `
+          .map(
+            (m) => `
                   <div class="viz-metric-card">
                     <span class="viz-metric-val">${m.val}</span>
                     <span class="viz-metric-lbl">${m.lbl}</span>
                   </div>
                 `
-                  )
-                  .join("")}
+          )
+          .join("")}
               </div>
 
             </div>
@@ -390,15 +390,15 @@ function openLightbox(projectId) {
 
       <div class="viz-metrics-grid" style="gap: 12px;">
         ${project.viz.metrics
-          .map(
-            (m) => `
+      .map(
+        (m) => `
           <div class="viz-metric-card" style="padding: 12px;">
             <span class="viz-metric-val" style="font-size: 1.15rem; color:#ffffff;">${m.val}</span>
             <span class="viz-metric-lbl" style="font-size: 0.75rem;">${m.lbl}</span>
           </div>
         `
-          )
-          .join("")}
+      )
+      .join("")}
       </div>
     </div>
   `;
@@ -551,13 +551,13 @@ if (orderForm) {
       // Fallback: If backend is offline, still let client connect via Telegram
       const fallbackId = "SHQ-" + Math.floor(1000 + Math.random() * 9000);
       successOrderId.textContent = fallbackId;
-      
+
       const briefText = `Заявка с сайта Shuaq (${fallbackId}):
 Клиент: ${orderPayload.name} (${orderPayload.telegram})
 Тип: ${orderPayload.serviceType}
 Бюджет: ${orderPayload.budget}
 Задача: ${orderPayload.description}`;
-      
+
       successTgLink.href = `https://t.me/dyman_kz?text=${encodeURIComponent(briefText)}`;
       orderForm.style.display = "none";
       orderSuccessView.style.display = "block";
