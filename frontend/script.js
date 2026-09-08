@@ -574,10 +574,13 @@ window.addEventListener("keydown", (e) => {
 });
 
 // ──── SEGMENTED CONTROL / FILTER LOGIC ────
-filterButtons.forEach((button) => {
+const filterButtonsArr = Array.from(filterButtons);
+const segmentedControl = document.querySelector(".segmented-control");
+
+filterButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
     filterButtons.forEach((btn) => {
-      btn.classList.remove("active");
+      btn.classList.remove("active", "stretch-right");
       btn.setAttribute("aria-selected", "false");
     });
 
@@ -587,7 +590,28 @@ filterButtons.forEach((button) => {
     const filterValue = button.dataset.filter;
     renderProjectCards(filterValue);
   });
+
+  // Elastic stretch: active colored button expands slightly to the right ONLY when hovering choices to its right
+  button.addEventListener("mouseenter", () => {
+    const activeBtn = document.querySelector(".seg-btn.active");
+    if (!activeBtn) return;
+    const activeIndex = filterButtonsArr.indexOf(activeBtn);
+    if (index > activeIndex) {
+      activeBtn.classList.add("stretch-right");
+    } else {
+      activeBtn.classList.remove("stretch-right");
+    }
+  });
 });
+
+if (segmentedControl) {
+  segmentedControl.addEventListener("mouseleave", () => {
+    const activeBtn = document.querySelector(".seg-btn.active");
+    if (activeBtn) {
+      activeBtn.classList.remove("stretch-right");
+    }
+  });
+}
 
 // ──── INITIALIZE ────
 renderProjectCards();

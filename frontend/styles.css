@@ -532,6 +532,7 @@ body {
   gap: 6px;
   padding: 6px;
   border-radius: 9999px;
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .seg-btn {
@@ -547,8 +548,9 @@ body {
   font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
+  transform-origin: left center;
 }
 
 .seg-btn:hover {
@@ -561,6 +563,20 @@ body {
   background: var(--shuaq-pill-gradient);
   box-shadow: 0 4px 16px rgba(63, 113, 251, 0.35);
   font-weight: 700;
+  transform-origin: left center;
+  transition: padding 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+              gap 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.28s ease,
+              background 0.2s ease,
+              color 0.2s ease;
+}
+
+/* Elastic stretch to the right ONLY when hovering choices situated to the right */
+.seg-btn.active:has(~ .seg-btn:hover),
+.seg-btn.active.stretch-right {
+  padding-right: 28px;
+  gap: 9px;
+  box-shadow: 0 6px 20px rgba(63, 113, 251, 0.45);
 }
 
 .seg-dot {
