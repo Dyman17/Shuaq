@@ -3,411 +3,419 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shuaq — Цифровые продукты на высоте · Apple & Arc Style</title>
-  <meta name="description" content="Портфолио цифрового агентства Shuaq (Шуақ). Full-stack веб-сервисы, AI-системы, IoT и Chrome Extensions. Оформление и согласование заказов онлайн." />
-  
-  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <title>Shuaq — IT-студия: сайты, боты и автоматизация для бизнеса</title>
+  <meta name="description" content="Shuaq — IT-студия полного цикла. Сайты, серверы, Telegram- и WhatsApp-боты, автоматизация для кафе, ресторанов и любого бизнеса. Запуск за 7–21 день." />
+  <meta name="theme-color" content="#F5F7FF" />
+  <meta property="og:title" content="Shuaq — сайты, боты и автоматизация для бизнеса" />
+  <meta property="og:description" content="Инженерная IT-студия: от лендинга до сервера, ботов и AI-автоматизации." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
 </head>
 <body>
-  <!-- ═══ AMBIENT SKY & CLOUD CANVAS ═══ -->
-  <div class="sky-container" aria-hidden="true">
-    <div class="sky-gradient"></div>
-    <div class="sun-glow"></div>
-    
-    <!-- Volumetric Animated Clouds -->
-    <div class="cloud-wrap cloud-layer-back">
-      <div class="cloud-puff puff-1"></div>
-      <div class="cloud-puff puff-2"></div>
-      <div class="cloud-puff puff-3"></div>
-    </div>
-    
-    <div class="cloud-wrap cloud-layer-mid">
-      <div class="cloud-puff puff-4"></div>
-      <div class="cloud-puff puff-5"></div>
-      <div class="cloud-puff puff-6"></div>
-    </div>
-
-    <div class="cloud-wrap cloud-layer-front">
-      <div class="cloud-puff puff-7"></div>
-      <div class="cloud-puff puff-8"></div>
-    </div>
-
-    <!-- Soft horizon mist -->
-    <div class="horizon-mist"></div>
+  <!-- ═══ Небо: мягкие облака на фоне всей страницы ═══ -->
+  <div class="sky" aria-hidden="true">
+    <div class="sky__cloud c1"></div>
+    <div class="sky__cloud c2"></div>
+    <div class="sky__cloud c3"></div>
+    <div class="sky__cloud c4"></div>
+    <div class="sky__cloud c5"></div>
+    <div class="sky__grain"></div>
   </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-  <!-- ═══ FLOATING DOCK / HEADER (Apple & Arc Pill) ═══ -->
-  <header class="floating-header" id="floatingHeader">
-    <div class="header-inner glass-panel">
-      <!-- Brand & 3D Logo Mark -->
-      <a class="brand-link" href="#top" aria-label="Shuaq Home">
-        <span class="brand-symbol">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="s-icon">
-            <defs>
-              <linearGradient id="nav-s-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#27B9FD" />
-                <stop offset="30%" stop-color="#3F71FB" />
-                <stop offset="60%" stop-color="#A075F9" />
-                <stop offset="85%" stop-color="#D59AE8" />
-                <stop offset="100%" stop-color="#FDAF65" />
-              </linearGradient>
-            </defs>
-            <path d="M28 10 C26 7, 20 6, 16 6 C10 6, 6 10, 6 15 C6 21, 14 23, 20 25 C26 27, 34 29, 34 35 C34 40, 28 44, 20 44 C12 44, 8 40, 6 36" 
-                  stroke="url(#nav-s-grad)" stroke-width="4.5" stroke-linecap="round" fill="none" />
-            <circle cx="27" cy="11" r="2" fill="#84D2FC" />
-            <circle cx="9" cy="35" r="2" fill="#FDAF65" />
-          </svg>
+  <!-- ═══ Навигация ═══ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="brand" aria-label="Shuaq — на главную">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><defs><radialGradient id="bsun" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFF1BF"/><stop offset=".6" stop-color="#FFC95C"/><stop offset="1" stop-color="#FF9E6B"/></radialGradient></defs><circle cx="30" cy="18" r="11" fill="url(#bsun)"/><path d="M12 38h22a8 8 0 0 0 0-16 10 10 0 0 0-19.2 3.1A6.5 6.5 0 0 0 12 38Z" fill="#fff" stroke="#DCE3FF" stroke-width="1.5"/></svg>
         </span>
-        <span class="brand-name">Shuaq</span>
+        <span class="brand__name">Shuaq</span>
       </a>
-
-      <!-- Altitude Badge -->
-      <div class="altitude-pill">
-        <span class="pulse-dot"></span>
-        <span class="alt-text">10,000m · Cloud Horizon</span>
-      </div>
-
-      <!-- Quick Nav Buttons -->
-      <div class="header-actions">
-        <a class="nav-pill-btn" href="https://github.com/Dyman17" target="_blank" rel="noreferrer">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-          </svg>
-          <span>GitHub</span>
-        </a>
-        <button class="nav-glow-cta" id="openOrderModalBtn" type="button">
-          <span>Заказать проект</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M12 5v14M5 12h14" />
-          </svg>
-        </button>
-      </div>
+      <nav class="nav__links" aria-label="Основное меню">
+        <a href="#services">Услуги</a>
+        <a href="#horeca">Для кафе</a>
+        <a href="#work">Проекты</a>
+        <a href="#process">Как работаем</a>
+        <a href="#pricing">Цены</a>
+      </nav>
+      <a href="#contact" class="btn btn--ink btn--sm nav__cta">Обсудить проект</a>
+      <button class="nav__burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <div class="nav__sheet" id="navSheet">
+      <a href="#services">Услуги</a>
+      <a href="#horeca">Для кафе и ресторанов</a>
+      <a href="#work">Проекты</a>
+      <a href="#process">Как работаем</a>
+      <a href="#pricing">Цены</a>
+      <a href="#contact" class="btn btn--ink">Обсудить проект</a>
     </div>
   </header>
 
-  <!-- ═══ MAIN CONTENT ═══ -->
-  <main id="top" class="main-content">
-    
-    <!-- ─── HERO HEADER (Apple Ethereal Flight) ─── -->
-    <section class="hero-sky">
-      <div class="hero-container">
-        <div class="sky-tag">
-          <span class="tag-sparkle">✦</span>
-          <span>SHUAQ DIGITAL STUDIO · НАД ОБЛАКАМИ</span>
-        </div>
-
-        <h1 class="hero-headline">
-          Создаем продукты<br />
-          <span class="gradient-text">на новой высоте.</span>
+  <main id="top">
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="pill-label reveal"><span class="dot"></span> IT-студия · Казахстан и СНГ</p>
+        <h1 class="hero__title reveal">
+          Сайты, боты и&nbsp;автоматизация, которые <span class="marker">работают</span> за&nbsp;вас
         </h1>
-
-        <p class="hero-subline">
-          Full-stack веб-сервисы, AI-системы, IoT и Chrome Extensions. Проекты с чистой инженерной архитектурой, 
-          живым кодом и онлайн-согласованием прямо через сайт.
+        <p class="hero__lead reveal">
+          Shuaq — инженерная студия полного цикла. Проектируем и запускаем сайты, серверы, Telegram- и WhatsApp-ботов и автоматизацию для кафе, ресторанов и любого бизнеса.
         </p>
-
-        <!-- Stats Bar (Arc Glass Pill) -->
-        <div class="stats-glass-bar glass-panel">
-          <div class="stat-cell">
-            <strong class="stat-number">9</strong>
-            <span class="stat-label">Реальных кейсов</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-cell">
-            <strong class="stat-number">42</strong>
-            <span class="stat-label">Репозитория</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-cell">
-            <strong class="stat-number">100%</strong>
-            <span class="stat-label">Рабочий код</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-cell">
-            <strong class="stat-number">4</strong>
-            <span class="stat-label">Стек-сферы</span>
-          </div>
+        <div class="hero__actions reveal">
+          <a href="#contact" class="btn btn--ink btn--lg magnetic">Получить расчёт <span class="btn__arrow">→</span></a>
+          <a href="#work" class="btn btn--glass btn--lg">Смотреть проекты</a>
         </div>
+        <ul class="hero__proof reveal">
+          <li><b data-count="17">0</b><span>проектов в&nbsp;портфолио</span></li>
+          <li><b>7–21</b><span>день до&nbsp;запуска</span></li>
+          <li><b>24/7</b><span>боты принимают заказы</span></li>
+        </ul>
+      </div>
 
-        <div class="hero-action-row">
-          <button class="btn-hero-order" id="heroOrderBtn" type="button">
-            <span>Оформить заказ онлайн</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-          <a class="btn-hero-tg" href="https://t.me/dyman_kz" target="_blank" rel="noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.94 8.13l-1.97 9.28c-.15.66-.54.82-1.09.51l-3.02-2.22-1.46 1.4c-.16.16-.3.3-.61.3l.22-3.06 5.55-5.02c.24-.22-.05-.34-.38-.13l-6.87 4.33-2.96-.92c-.64-.2-.66-.64.14-.95l11.58-4.47c.53-.2 1 .13.82.95z" />
-            </svg>
-            <span>Написать менеджеру в Telegram</span>
-          </a>
+      <div class="hero__visual" id="heroVisual">
+        <canvas id="scene" aria-label="Трёхмерная сцена: облако, солнце, телефон с ботом, сервер, окно браузера и чашка кофе"></canvas>
+        <div class="scene-label" id="sceneLabel"></div>
+        <div class="hero__float hero__float--a glass">
+          <span class="ico ico--mint">✓</span>
+          <div><b>Новый заказ</b><small>2 капучино · 4 200 ₸</small></div>
+        </div>
+        <div class="hero__float hero__float--b glass">
+          <span class="ico ico--sky">✈</span>
+          <div><b>Заявка с сайта</b><small>уже в Telegram · только что</small></div>
+        </div>
+        <p class="hero__hint">Наведите на объект</p>
+      </div>
+    </section>
+
+    <!-- ═══ Бегущая строка стека ═══ -->
+    <section class="stack" aria-label="Технологии">
+      <div class="stack__track">
+        <div class="stack__row">
+          <span>React</span><span>Next.js</span><span>Astro</span><span>TypeScript</span><span>Node.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Telegram Bot API</span><span>WhatsApp Cloud API</span><span>OpenAI</span><span>YOLOv8</span><span>ESP32</span><span>Docker</span><span>Vercel</span><span>Render</span>
+        </div>
+        <div class="stack__row" aria-hidden="true">
+          <span>React</span><span>Next.js</span><span>Astro</span><span>TypeScript</span><span>Node.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Telegram Bot API</span><span>WhatsApp Cloud API</span><span>OpenAI</span><span>YOLOv8</span><span>ESP32</span><span>Docker</span><span>Vercel</span><span>Render</span>
         </div>
       </div>
     </section>
 
-    <!-- ─── PORTFOLIO SHOWCASE ─── -->
-    <section class="portfolio-section" id="portfolio">
-      <div class="section-container">
-        
-        <!-- Filter Pills Bar (Arc Browser Segmented Control) -->
-        <div class="filter-controls-wrap">
-          <div class="segmented-control glass-panel" role="tablist" aria-label="Фильтры проектов">
-            <!-- Dynamic Sliding & Elastic Indicator Pill -->
-            <div class="seg-sliding-indicator" id="segSlidingIndicator" aria-hidden="true"></div>
-            <button class="seg-btn active" data-filter="all" role="tab" aria-selected="true">
-              <span class="seg-dot"></span>
-              <span>Все проекты</span>
-              <span class="seg-count">9</span>
-            </button>
-            <button class="seg-btn" data-filter="web" role="tab" aria-selected="false">
-              <span>Web & SaaS</span>
-              <span class="seg-count">4</span>
-            </button>
-            <button class="seg-btn" data-filter="ai" role="tab" aria-selected="false">
-              <span>AI & Vision</span>
-              <span class="seg-count">4</span>
-            </button>
-            <button class="seg-btn" data-filter="iot" role="tab" aria-selected="false">
-              <span>IoT & Hardware</span>
-              <span class="seg-count">3</span>
-            </button>
-            <button class="seg-btn" data-filter="extension" role="tab" aria-selected="false">
-              <span>Extensions</span>
-              <span class="seg-count">1</span>
-            </button>
+    <!-- ═══ УСЛУГИ ═══ -->
+    <section class="section" id="services">
+      <header class="section__head">
+        <p class="pill-label reveal">Услуги</p>
+        <h2 class="reveal">Всё, что нужно бизнесу<br />в цифре — в одной студии</h2>
+        <p class="section__lead reveal">Не собираем сайты из шаблонов. Пишем чистый код, связываем сайт, бота, сервер и вашу кассу в одну систему, которая экономит время и приносит заявки.</p>
+      </header>
+
+      <div class="services">
+        <article class="svc svc--wide tilt reveal" data-tone="sky">
+          <div class="svc__art" aria-hidden="true">
+            <div class="mini-browser"><i></i><i></i><i></i><div class="mb-hero"></div><div class="mb-row"><span></span><span></span><span></span></div></div>
           </div>
-        </div>
+          <div class="svc__body">
+            <span class="svc__num">01</span>
+            <h3>Сайты и лендинги</h3>
+            <p>Лендинги, корпоративные сайты, интернет-магазины и каталоги. Быстрые, адаптивные, с анимациями и формами, которые отправляют заявки прямо в Telegram.</p>
+            <ul class="chips"><li>Лендинги</li><li>Корпоративные</li><li>Магазины</li><li>SEO</li></ul>
+          </div>
+        </article>
 
-        <!-- ─── PROJECTS GRID ─── -->
-        <div class="projects-grid" id="projectsGrid">
-          <!-- Dynamically populated via script.js -->
-        </div>
+        <article class="svc tilt reveal" data-tone="lav">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="9" rx="4.5"/><rect x="8" y="20" width="32" height="9" rx="4.5"/><rect x="8" y="32" width="32" height="9" rx="4.5"/><circle cx="33" cy="12.5" r="1.8" class="led"/><circle cx="33" cy="24.5" r="1.8" class="led"/><circle cx="33" cy="36.5" r="1.8" class="led"/></svg>
+          </div>
+          <span class="svc__num">02</span>
+          <h3>Серверы и backend</h3>
+          <p>API, базы данных, личные кабинеты, CRM-панели и админки. Настраиваем хостинг, бэкапы и мониторинг.</p>
+          <ul class="chips"><li>API</li><li>PostgreSQL</li><li>Админки</li></ul>
+        </article>
 
+        <article class="svc tilt reveal" data-tone="sky">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M41 9 6.5 22.3c-1.6.6-1.5 2.9.1 3.4l8.4 2.6 3.2 10c.5 1.5 2.4 1.9 3.4.7l4.5-5 8.6 6.3c1.3 1 3.1.2 3.5-1.4L44 11.8c.4-1.8-1.3-3.4-3-2.8Z"/><path d="m15.5 28 17-11" class="line"/></svg>
+          </div>
+          <span class="svc__num">03</span>
+          <h3>Telegram-боты</h3>
+          <p>Приём заказов, запись, рассылки, оплата, уведомления сотрудникам и мини-приложения прямо внутри Telegram.</p>
+          <ul class="chips"><li>Заказы</li><li>Mini Apps</li><li>Оплата</li></ul>
+        </article>
+
+        <article class="svc tilt reveal" data-tone="mint">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 6a18 18 0 0 0-15.5 27.2L6 42l9-2.4A18 18 0 1 0 24 6Z"/><path d="M18 16.5c.6-1 1.6-1 2.2 0l1.6 3.2c.3.6.1 1.3-.4 1.7l-1 .8c1 2.2 2.8 4 5 5l.8-1c.4-.5 1.1-.7 1.7-.4l3.2 1.6c1 .6 1 1.6 0 2.2-3.4 2.4-7.8.4-10.8-2.6S15.6 19.9 18 16.5Z" class="fill-white"/></svg>
+          </div>
+          <span class="svc__num">04</span>
+          <h3>WhatsApp-боты</h3>
+          <p>Официальный WhatsApp Business API: автоответы, меню, приём заказов и записи там, где уже сидят ваши клиенты.</p>
+          <ul class="chips"><li>Cloud API</li><li>Автоответы</li><li>Запись</li></ul>
+        </article>
+
+        <article class="svc tilt reveal" data-tone="peach">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M10 18h24v10a12 12 0 0 1-12 12h0a12 12 0 0 1-12-12V18Z"/><path d="M34 21h2.5a5 5 0 0 1 0 10H33" class="line"/><path d="M17 8c0 3 3 3 3 6M24 6c0 3 3 3 3 6" class="line"/></svg>
+          </div>
+          <span class="svc__num">05</span>
+          <h3>Автоматизация HoReCa</h3>
+          <p>QR-меню, онлайн-заказы и бронь, чеки на кухню, учёт и аналитика для кафе, ресторанов и доставки.</p>
+          <ul class="chips"><li>QR-меню</li><li>Бронь</li><li>Кухня</li></ul>
+        </article>
+
+        <article class="svc svc--half tilt reveal" data-tone="sun">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="7"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.6 10.6l4.2 4.2M33.2 33.2l4.2 4.2M10.6 37.4l4.2-4.2M33.2 14.8l4.2-4.2" class="line"/></svg>
+          </div>
+          <span class="svc__num">06</span>
+          <h3>AI и интеграции</h3>
+          <p>AI-ассистенты с базой знаний компании, компьютерное зрение, интеграции с CRM, 1С, Google Sheets и платёжками.</p>
+          <ul class="chips"><li>AI-агенты</li><li>CRM</li><li>Платежи</li></ul>
+        </article>
       </div>
     </section>
 
-  </main>
-
-  <!-- ═══ INTERACTIVE ORDER / BRIEF MODAL (Liquid Glass) ═══ -->
-  <div class="order-modal" id="orderModal" aria-hidden="true" role="dialog">
-    <div class="order-backdrop" id="orderBackdrop"></div>
-    <div class="order-window glass-panel">
-      
-      <!-- Window Titlebar -->
-      <div class="order-titlebar">
-        <div class="mac-dots">
-          <button class="mac-dot red" id="orderCloseBtn" aria-label="Закрыть"></button>
-          <span class="mac-dot yellow"></span>
-          <span class="mac-dot green"></span>
+    <!-- ═══ HORECA ═══ -->
+    <section class="section horeca" id="horeca">
+      <div class="horeca__card">
+        <div class="horeca__text">
+          <p class="pill-label pill-label--peach reveal">Для кафе и ресторанов</p>
+          <h2 class="reveal">Бот принимает заказ, кухня уже готовит</h2>
+          <p class="section__lead reveal">Гость сканирует QR или пишет в WhatsApp — бот показывает меню, собирает заказ, принимает оплату и сразу отправляет чек на кухню. Вы видите выручку и популярные блюда в реальном времени.</p>
+          <ul class="checks reveal">
+            <li><span>✓</span> QR-меню с фото и стоп-листом</li>
+            <li><span>✓</span> Заказы и бронь столов в Telegram и WhatsApp</li>
+            <li><span>✓</span> Уведомления на кухню и курьерам</li>
+            <li><span>✓</span> Оплата онлайн и интеграция с кассой</li>
+            <li><span>✓</span> Отзывы, бонусы и рассылки постоянным гостям</li>
+          </ul>
+          <a href="#contact" class="btn btn--ink reveal" data-service="Автоматизация для кафе / ресторана">Автоматизировать заведение <span class="btn__arrow">→</span></a>
         </div>
-        <div class="order-title">Shuaq Order Studio · Согласование проекта</div>
-        <div class="order-badge">Online 24/7</div>
+
+        <div class="horeca__demo reveal">
+          <div class="phone tilt-soft">
+            <div class="phone__notch"></div>
+            <div class="phone__top">
+              <span class="phone__ava">☕</span>
+              <div><b>Coffee Bot</b><small id="botStatus">онлайн</small></div>
+            </div>
+            <div class="chat" id="chat" aria-live="polite"></div>
+            <div class="phone__input"><span>Сообщение</span><i>➤</i></div>
+          </div>
+          <div class="ticket glass" id="ticket">
+            <small>Кухня · заказ <b>#248</b></small>
+            <ul><li>2 × Капучино</li><li>1 × Круассан</li></ul>
+            <span class="ticket__badge">Готовится</span>
+          </div>
+        </div>
       </div>
 
-      <div class="order-body">
-        
-        <!-- Form View -->
-        <form class="order-form" id="orderForm">
-          <div class="form-header">
-            <h2>Опишите вашу задачу</h2>
-            <p>Заполните форму ниже — заказ моментально попадет в нашу базу и будет переслан в Telegram менеджеру.</p>
-          </div>
+      <div class="horeca__stats">
+        <div class="stat reveal"><b>24/7</b><span>приём заказов без администратора</span></div>
+        <div class="stat reveal"><b>0 сек</b><span>от оплаты до чека на кухне</span></div>
+        <div class="stat reveal"><b>2 канала</b><span>Telegram и WhatsApp в одной системе</span></div>
+        <div class="stat reveal"><b>1 панель</b><span>заказы, бронь, отзывы и выручка</span></div>
+      </div>
+    </section>
 
-          <!-- Service Type Selection -->
-          <div class="form-group">
-            <label class="form-label">Тип проекта / Направление</label>
-            <div class="service-pills-grid" id="servicePills">
-              <label class="pill-label active">
-                <input type="radio" name="serviceType" value="Web & SaaS" checked />
-                <span>🌐 Web & SaaS</span>
-              </label>
-              <label class="pill-label">
-                <input type="radio" name="serviceType" value="AI & Automation" />
-                <span>🧠 AI & Автоматизация</span>
-              </label>
-              <label class="pill-label">
-                <input type="radio" name="serviceType" value="IoT & Hardware" />
-                <span>⚡ IoT & Железо</span>
-              </label>
-              <label class="pill-label">
-                <input type="radio" name="serviceType" value="Chrome Extension" />
-                <span>🧩 Chrome Extension</span>
-              </label>
-              <label class="pill-label">
-                <input type="radio" name="serviceType" value="Другое" />
-                <span>✨ Другое</span>
-              </label>
+    <!-- ═══ ПРОЕКТЫ ═══ -->
+    <section class="section" id="work">
+      <header class="section__head section__head--row">
+        <div>
+          <p class="pill-label reveal">Портфолио</p>
+          <h2 class="reveal">Проекты, которые<br />уже работают</h2>
+        </div>
+        <div class="seg reveal" id="filters" role="tablist" aria-label="Фильтр проектов">
+          <span class="seg__pill" id="segPill"></span>
+        </div>
+      </header>
+      <div class="work" id="workGrid"></div>
+      <div class="work__more">
+        <button class="btn btn--glass" id="showMore">Показать все проекты</button>
+      </div>
+    </section>
+
+    <!-- ═══ ПРОЦЕСС ═══ -->
+    <section class="section" id="process">
+      <header class="section__head">
+        <p class="pill-label reveal">Как работаем</p>
+        <h2 class="reveal">Прозрачно, по этапам,<br />без сюрпризов</h2>
+        <p class="section__lead reveal">Каждый этап вы утверждаете. С первой недели видите живую демо-ссылку и можете покликать сайт с телефона.</p>
+      </header>
+      <ol class="process">
+        <li class="step reveal"><span class="step__n">1</span><h3>Бриф</h3><p>Созвон 20 минут: цели, задачи, сроки. Фиксируем ТЗ и смету.</p><small>1–2 дня</small></li>
+        <li class="step reveal"><span class="step__n">2</span><h3>Прототип</h3><p>Структура, тексты и сценарии ботов — до того, как рисовать.</p><small>2–4 дня</small></li>
+        <li class="step reveal"><span class="step__n">3</span><h3>Дизайн</h3><p>Первый экран в вашем стиле, затем весь сайт и мобильная версия.</p><small>3–7 дней</small></li>
+        <li class="step reveal"><span class="step__n">4</span><h3>Разработка</h3><p>Код, сервер, бот, интеграции. Демо-ссылка с первой недели.</p><small>5–12 дней</small></li>
+        <li class="step reveal"><span class="step__n">5</span><h3>Тесты</h3><p>Проверяем формы, скорость и все сценарии на реальных устройствах.</p><small>2–3 дня</small></li>
+        <li class="step reveal"><span class="step__n">6</span><h3>Запуск</h3><p>Домен, SSL, видео-инструкция и поддержка после релиза.</p><small>1–2 дня</small></li>
+      </ol>
+    </section>
+
+    <!-- ═══ ЦЕНЫ ═══ -->
+    <section class="section" id="pricing">
+      <header class="section__head">
+        <p class="pill-label reveal">Пакеты</p>
+        <h2 class="reveal">Понятные цены<br />и фиксированные сроки</h2>
+        <p class="section__lead reveal">Ориентир для старта. Точную смету считаем после брифа — бесплатно, за один день.</p>
+      </header>
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Лендинг</h3>
+          <p class="plan__for">Для рекламы, услуги или нового продукта</p>
+          <p class="plan__price"><small>от</small> 120 000 ₸</p>
+          <ul><li>6–9 блоков, адаптив</li><li>Анимации и 3D-акценты</li><li>Заявки в Telegram</li><li>Базовое SEO</li></ul>
+          <p class="plan__time">5–10 дней</p>
+          <a href="#contact" class="btn btn--glass" data-service="Лендинг">Выбрать</a>
+        </article>
+        <article class="plan plan--hot reveal">
+          <span class="plan__badge">Популярно</span>
+          <h3>Бот + автоматизация</h3>
+          <p class="plan__for">Для кафе, салонов, клиник и сервисов</p>
+          <p class="plan__price"><small>от</small> 150 000 ₸</p>
+          <ul><li>Telegram или WhatsApp-бот</li><li>Меню, заказы, запись</li><li>Панель для менеджера</li><li>AI-ответы по базе знаний</li></ul>
+          <p class="plan__time">5–14 дней</p>
+          <a href="#contact" class="btn btn--ink" data-service="Telegram / WhatsApp бот">Выбрать</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Сайт или магазин</h3>
+          <p class="plan__for">Для компаний и ритейла</p>
+          <p class="plan__price"><small>от</small> 250 000 ₸</p>
+          <ul><li>4–8 страниц или каталог</li><li>Админка для контента</li><li>Корзина и онлайн-оплата</li><li>Интеграции с CRM</li></ul>
+          <p class="plan__time">14–35 дней</p>
+          <a href="#contact" class="btn btn--glass" data-service="Корпоративный сайт / магазин">Выбрать</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Web-сервис</h3>
+          <p class="plan__for">Для стартапов и сложных задач</p>
+          <p class="plan__price"><small>от</small> 800 000 ₸</p>
+          <ul><li>Личные кабинеты и роли</li><li>Сервер и база данных</li><li>Дашборды и аналитика</li><li>IoT и AI по запросу</li></ul>
+          <p class="plan__time">1–2 месяца</p>
+          <a href="#contact" class="btn btn--glass" data-service="Web-сервис / SaaS">Выбрать</a>
+        </article>
+      </div>
+      <p class="plans__note reveal">Поддержка после запуска — от 30 000 ₸ / мес: хостинг, бэкапы, мониторинг и мелкие правки.</p>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section faq-wrap" id="faq">
+      <header class="section__head">
+        <p class="pill-label reveal">Вопросы</p>
+        <h2 class="reveal">Часто спрашивают</h2>
+      </header>
+      <div class="faq">
+        <details class="reveal"><summary>Сколько стоит и как вы считаете цену?<i></i></summary><p>Цена зависит от объёма: лендинг — от 120 000 ₸, бот — от 150 000 ₸. После короткого брифа присылаем смету по этапам, и она не меняется, если не меняется ТЗ.</p></details>
+        <details class="reveal"><summary>Как проходит оплата?<i></i></summary><p>50% — перед стартом, 50% — перед переносом на ваш домен. Для крупных проектов: 30 / 40 / 30 по этапам.</p></details>
+        <details class="reveal"><summary>Сколько правок входит?<i></i></summary><p>Две полные итерации правок на каждом этапе: прототип, дизайн и разработка. Вы собираете замечания одним списком — так проект не затягивается.</p></details>
+        <details class="reveal"><summary>Можно связать бота с моей кассой или CRM?<i></i></summary><p>Да. Интегрируемся с платёжными системами, CRM, Google Sheets и учётными системами через их API. Если API нет — подбираем обходное решение.</p></details>
+        <details class="reveal"><summary>Что будет после запуска?<i></i></summary><p>Передаём доступы и исходный код, записываем видео-инструкцию. По желанию берём сайт на поддержку: хостинг, бэкапы, мониторинг и правки.</p></details>
+      </div>
+    </section>
+
+    <!-- ═══ КОНТАКТ ═══ -->
+    <section class="section contact" id="contact">
+      <div class="contact__card">
+        <div class="contact__text">
+          <p class="pill-label pill-label--sun reveal">Начнём?</p>
+          <h2 class="reveal">Расскажите о задаче — ответим в&nbsp;течение часа</h2>
+          <p class="section__lead reveal">Бесплатно оценим проект, предложим решение и сроки. Без навязчивых звонков.</p>
+          <div class="contact__links reveal">
+            <a href="https://t.me/dyman_kz" target="_blank" rel="noopener" class="contact-chip"><span class="ico ico--sky">✈</span><div><b>Telegram</b><small>@dyman_kz</small></div></a>
+            <a href="#" target="_blank" rel="noopener" class="contact-chip" id="waLink" hidden><span class="ico ico--mint">✆</span><div><b>WhatsApp</b><small id="waText"></small></div></a>
+          </div>
+        </div>
+
+        <form class="form reveal" id="orderForm" novalidate>
+          <div class="form__grid">
+            <label class="field"><span>Имя</span><input name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required /></label>
+            <label class="field"><span>Telegram или телефон</span><input name="telegram" type="text" autocomplete="tel" placeholder="@username или +7…" required /></label>
+          </div>
+          <fieldset class="field">
+            <legend>Что нужно</legend>
+            <div class="choice" id="serviceChoice">
+              <label><input type="radio" name="serviceType" value="Лендинг" checked /><span>Лендинг</span></label>
+              <label><input type="radio" name="serviceType" value="Корпоративный сайт / магазин" /><span>Сайт / магазин</span></label>
+              <label><input type="radio" name="serviceType" value="Telegram / WhatsApp бот" /><span>Бот</span></label>
+              <label><input type="radio" name="serviceType" value="Автоматизация для кафе / ресторана" /><span>Кафе / ресторан</span></label>
+              <label><input type="radio" name="serviceType" value="Web-сервис / SaaS" /><span>Web-сервис</span></label>
+              <label><input type="radio" name="serviceType" value="Другое" /><span>Другое</span></label>
             </div>
-          </div>
-
-          <!-- Description -->
-          <div class="form-group">
-            <label class="form-label" for="taskDescription">Что вы хотите создать? (Суть задачи)</label>
-            <textarea id="taskDescription" name="description" rows="3" class="glass-input textarea" 
-                      placeholder="Например: нужен интернет-магазин с каталогом, калькулятором и оплатой, либо AI-бот для обработки заказов..." required></textarea>
-          </div>
-
-          <!-- Budget & Deadline Grid -->
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="budgetSelect">Ориентировочный бюджет</label>
-              <select id="budgetSelect" name="budget" class="glass-input select">
-                <option value="50 000₸ - 150 000₸">50 000₸ – 150 000₸ (Быстрый старт / Лендинг)</option>
-                <option value="150 000₸ - 350 000₸" selected>150 000₸ – 350 000₸ (Web-сервис / Бот)</option>
-                <option value="350 000₸ - 700 000₸">350 000₸ – 700 000₸ (SaaS / AI / Комплекс)</option>
-                <option value="700 000₸+">700 000₸+ (Индивидуальный проект)</option>
-                <option value="Обсуждается">Обсуждается лично</option>
+          </fieldset>
+          <div class="form__grid">
+            <label class="field"><span>Бюджет</span>
+              <select name="budget">
+                <option>До 200 000 ₸</option>
+                <option selected>200 000 – 500 000 ₸</option>
+                <option>500 000 – 1 000 000 ₸</option>
+                <option>Более 1 000 000 ₸</option>
+                <option>Пока не знаю</option>
               </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="deadlineSelect">Желаемые сроки</label>
-              <select id="deadlineSelect" name="deadline" class="glass-input select">
-                <option value="Срочно (3-7 дней)">Срочно (3–7 дней)</option>
-                <option value="2-3 недели" selected>2–3 недели</option>
-                <option value="1 месяц">1 месяц</option>
-                <option value="Не спеша / Качество">Главное — качество</option>
+            </label>
+            <label class="field"><span>Сроки</span>
+              <select name="deadline">
+                <option>Срочно, 1–2 недели</option>
+                <option selected>В течение месяца</option>
+                <option>Не горит</option>
               </select>
-            </div>
+            </label>
           </div>
-
-          <!-- Contacts Grid -->
-          <div class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="clientName">Ваше имя</label>
-              <input type="text" id="clientName" name="name" class="glass-input" placeholder="Алихан" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="clientTelegram">Ваш Telegram (@username)</label>
-              <input type="text" id="clientTelegram" name="telegram" class="glass-input" placeholder="@username или номер" required />
-            </div>
-          </div>
-
-          <!-- Actions -->
-          <div class="form-actions">
-            <button type="submit" class="btn-submit-order" id="submitOrderBtn">
-              <span class="btn-text">Отправить заказ на сайт</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-            <button type="button" class="btn-direct-tg" id="directTgBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.94 8.13l-1.97 9.28c-.15.66-.54.82-1.09.51l-3.02-2.22-1.46 1.4c-.16.16-.3.3-.61.3l.22-3.06 5.55-5.02c.24-.22-.05-.34-.38-.13l-6.87 4.33-2.96-.92c-.64-.2-.66-.64.14-.95l11.58-4.47c.53-.2 1 .13.82.95z" />
-              </svg>
-              <span>Сформировать бриф в Telegram</span>
-            </button>
-          </div>
+          <label class="field"><span>Коротко о задаче</span><textarea name="description" rows="3" placeholder="Например: кофейня в Актау, нужен бот для заказов навынос и QR-меню"></textarea></label>
+          <button type="submit" class="btn btn--ink btn--lg btn--block" id="submitBtn"><span class="btn__text">Отправить заявку</span> <span class="btn__arrow">→</span></button>
+          <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку контактных данных для ответа на заявку.</p>
+          <p class="form__error" id="formError" role="alert"></p>
         </form>
 
-        <!-- Success State View (Hidden by default) -->
-        <div class="order-success-view" id="orderSuccessView" style="display: none;">
-          <div class="success-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="success-check">
-              <path d="M20 6L9 17l-5-5" />
-            </svg>
-          </div>
-          <h3>Заказ успешно отправлен!</h3>
-          <p>Ваша заявка зарегистрирована в базе студии Shuaq и передана менеджеру в Telegram.</p>
-          
-          <div class="order-id-badge">
-            <span>Код заявки:</span>
-            <strong id="successOrderId">SHQ-1001</strong>
-          </div>
-
-          <div class="success-actions">
-            <a class="btn-tg-chat-now" id="successTgLink" href="https://t.me/dyman_kz" target="_blank" rel="noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.94 8.13l-1.97 9.28c-.15.66-.54.82-1.09.51l-3.02-2.22-1.46 1.4c-.16.16-.3.3-.61.3l.22-3.06 5.55-5.02c.24-.22-.05-.34-.38-.13l-6.87 4.33-2.96-.92c-.64-.2-.66-.64.14-.95l11.58-4.47c.53-.2 1 .13.82.95z" />
-              </svg>
-              <span>Открыть диалог в Telegram с этим заказом</span>
-            </a>
-            <button type="button" class="btn-close-modal" id="successDoneBtn">Закрыть окно</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ FULLSCREEN LIGHTBOX MODAL (Apple VisionOS / macOS Style) ═══ -->
-  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" role="dialog">
-    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-    <div class="lightbox-window glass-panel">
-      <!-- Window Controls -->
-      <div class="lightbox-titlebar">
-        <div class="mac-dots">
-          <button class="mac-dot red" id="lightboxCloseBtn" aria-label="Закрыть"></button>
-          <span class="mac-dot yellow"></span>
-          <span class="mac-dot green"></span>
-        </div>
-        <div class="lightbox-title" id="lightboxTitle">Project Preview</div>
-        <div class="lightbox-meta" id="lightboxCategory">Category</div>
-      </div>
-      
-      <!-- Window Body -->
-      <div class="lightbox-content">
-        <div class="lightbox-preview-area" id="lightboxPreviewArea">
-          <!-- Dynamic High-Res UI Mockup -->
-        </div>
-        <div class="lightbox-details">
-          <h2 id="lightboxHeading">Project Title</h2>
-          <p id="lightboxDescription">Description goes here</p>
-          
-          <div class="lightbox-specs">
-            <div class="spec-group">
-              <span class="spec-label">Технологический стек</span>
-              <div class="tags-row" id="lightboxTags"></div>
-            </div>
-            <div class="spec-group">
-              <span class="spec-label">Ключевая ценность</span>
-              <div class="spec-highlight" id="lightboxHighlight"></div>
-            </div>
-          </div>
-
-          <div class="lightbox-actions">
-            <a class="btn-github-large" id="lightboxGithubLink" href="#" target="_blank" rel="noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-              <span>Смотреть исходный код на GitHub →</span>
-            </a>
-            <button class="btn-order-from-lightbox" id="orderFromLightboxBtn" type="button">
-              <span>Заказать проект в этом стиле ✦</span>
-            </button>
-          </div>
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="form-success__ico">✓</div>
+          <h3>Заявка принята!</h3>
+          <p>Код заявки <b id="orderId">—</b>. Менеджер напишет вам в ближайшее время.</p>
+          <a class="btn btn--ink" id="tgFollow" href="https://t.me/dyman_kz" target="_blank" rel="noopener">Продолжить в Telegram →</a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- ═══ AIRY ETHEREAL FOOTER ═══ -->
-  <footer class="sky-footer">
-    <div class="footer-inner glass-panel">
-      <div class="footer-brand">
-        <span class="footer-logo">Shuaq</span>
-        <span class="footer-desc">Crafted above the clouds · Apple & Arc aesthetic</span>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="brand"><span class="brand__name">Shuaq</span></a>
+        <p><i>Шуақ</i> — по-казахски «тёплый солнечный свет». Делаем технологии, рядом с которыми бизнесу светло и спокойно.</p>
       </div>
-      <div class="footer-links">
-        <a href="https://github.com/Dyman17" target="_blank" rel="noreferrer">GitHub @Dyman17</a>
-        <a href="https://t.me/dyman_kz" target="_blank" rel="noreferrer">Telegram</a>
-        <a href="#top" class="back-to-top-btn" aria-label="Вверх">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
-          <span>К началу</span>
-        </a>
-      </div>
+      <nav class="footer__nav" aria-label="Нижнее меню">
+        <a href="#services">Услуги</a><a href="#horeca">Для кафе</a><a href="#work">Проекты</a><a href="#pricing">Цены</a><a href="#contact">Контакты</a>
+      </nav>
+      <p class="footer__copy">© <span id="year">2026</span> Shuaq Digital Studio</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ═══ Модальное окно проекта ═══ -->
+  <dialog class="modal" id="projectModal" aria-labelledby="modalTitle">
+    <button class="modal__close" id="modalClose" aria-label="Закрыть">✕</button>
+    <div class="modal__cover" id="modalCover"></div>
+    <div class="modal__body">
+      <p class="modal__kicker" id="modalKicker"></p>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDetails"></p>
+      <div class="modal__result"><span>Результат</span><p id="modalResult"></p></div>
+      <ul class="chips" id="modalTags"></ul>
+      <div class="modal__links" id="modalLinks"></div>
+    </div>
+  </dialog>
+
+  <script type="module" src="script.js"></script>
+  <script type="module" src="scene.js"></script>
 </body>
 </html>
