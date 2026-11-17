@@ -26,6 +26,43 @@
   </script>
 </head>
 <body>
+  <!-- ═══ Иконки: спрайт Phosphor duotone (см. frontend/README.md) ═══ -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
+  <!-- Phosphor Icons 2.1.1 (MIT) · duotone: слой «облачка» красится через --i-fill / --i-o -->
+  <symbol id="i-browsers" viewBox="0 0 256 256"><path d="M224,56V168a8,8,0,0,1-8,8H192V88a8,8,0,0,0-8-8H64V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,88H184v16H40ZM184,200H40V120H184v80Zm32-32H200V88a16,16,0,0,0-16-16H72V56H216Z"/></symbol>
+  <symbol id="i-hard-drives" viewBox="0 0 256 256"><path d="M216,152v48a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152a8,8,0,0,1,8-8H208A8,8,0,0,1,216,152ZM208,48H48a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V56A8,8,0,0,0,208,48Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M208,136H48a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136Zm0,64H48V152H208v48Zm0-160H48A16,16,0,0,0,32,56v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V56A16,16,0,0,0,208,40Zm0,64H48V56H208v48ZM192,80a12,12,0,1,1-12-12A12,12,0,0,1,192,80Zm0,96a12,12,0,1,1-12-12A12,12,0,0,1,192,176Z"/></symbol>
+  <symbol id="i-telegram-logo" viewBox="0 0 256 256"><path d="M223.41,32.09,80,134.87,21,123.3A6.23,6.23,0,0,1,20,111.38L222.63,32.07A1,1,0,0,1,223.41,32.09ZM80,200a8,8,0,0,0,13.76,5.56l30.61-31.76L80,134.87Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M228.88,26.19a9,9,0,0,0-9.16-1.57L17.06,103.93a14.22,14.22,0,0,0,2.43,27.21L72,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L165,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L231.77,35A9,9,0,0,0,228.88,26.19ZM78.15,126.35l-49.61-9.73,139.2-54.48ZM88,200V152.52l24.79,21.74Zm87.53,8L92.85,135.5l119-85.29Z"/></symbol>
+  <symbol id="i-whatsapp-logo" viewBox="0 0 256 256"><path d="M128,32A96,96,0,0,0,44.89,176.07L32.42,213.46a8,8,0,0,0,10.12,10.12l37.39-12.47A96,96,0,1,0,128,32Zm24,152a80,80,0,0,1-80-80,32,32,0,0,1,32-32l16,32-12.32,18.47a48.19,48.19,0,0,0,25.85,25.85L152,136l32,16A32,32,0,0,1,152,184Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.62-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 256 256"><path d="M208,88v48a88,88,0,0,1-51.3,80H83.3A88,88,0,0,1,32,136V88Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 256 256"><path d="M194.82,151.43l-55.09,20.3-20.3,55.09a7.92,7.92,0,0,1-14.86,0l-20.3-55.09-55.09-20.3a7.92,7.92,0,0,1,0-14.86l55.09-20.3,20.3-55.09a7.92,7.92,0,0,1,14.86,0l20.3,55.09,55.09,20.3A7.92,7.92,0,0,1,194.82,151.43Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+  <symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M223.69,42.18l-58.22,192a8,8,0,0,1-14.92,1.25L108,148,20.58,105.45a8,8,0,0,1,1.25-14.92l192-58.22A8,8,0,0,1,223.69,42.18Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
+  <symbol id="i-cursor-click" viewBox="0 0 256 256"><path d="M213.66,201,201,213.66a8,8,0,0,1-11.31,0l-51.31-51.31a8,8,0,0,0-13,2.46l-17.82,46.41a8,8,0,0,1-14.85-.71L40.41,50.44a8,8,0,0,1,10-10L210.51,92.68a8,8,0,0,1,.71,14.85l-46.41,17.82a8,8,0,0,0-2.46,13l51.31,51.31A8,8,0,0,1,213.66,201Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M88,24V16a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0ZM16,104h8a8,8,0,0,0,0-16H16a8,8,0,0,0,0,16ZM124.42,39.16a8,8,0,0,0,10.74-3.58l8-16a8,8,0,0,0-14.31-7.16l-8,16A8,8,0,0,0,124.42,39.16Zm-96,81.69-16,8a8,8,0,0,0,7.16,14.31l16-8a8,8,0,1,0-7.16-14.31ZM219.31,184a16,16,0,0,1,0,22.63l-12.68,12.68a16,16,0,0,1-22.63,0L132.7,168,115,214.09c0,.1-.08.21-.13.32a15.83,15.83,0,0,1-14.6,9.59l-.79,0a15.83,15.83,0,0,1-14.41-11L32.8,52.92A16,16,0,0,1,52.92,32.8L213,85.07a16,16,0,0,1,1.41,29.8l-.32.13L168,132.69ZM208,195.31,156.69,144h0a16,16,0,0,1,4.93-26l.32-.14,45.95-17.64L48,48l52.2,159.86,17.65-46c0-.11.08-.22.13-.33a16,16,0,0,1,11.69-9.34,16.72,16.72,0,0,1,3-.28,16,16,0,0,1,11.3,4.69L195.31,208Z"/></symbol>
+  <symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M224,128A96,96,0,0,1,79.93,211.11h0L42.54,223.58a8,8,0,0,1-10.12-10.12l12.47-37.39h0A96,96,0,1,1,224,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-4-1.08,7.85,7.85,0,0,0-2.53.42L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Zm40-104a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,144Z"/></symbol>
+  <symbol id="i-path" viewBox="0 0 256 256"><path d="M224,200a24,24,0,1,1-24-24A24,24,0,0,1,224,200Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M200,168a32.06,32.06,0,0,0-31,24H72a32,32,0,0,1,0-64h96a40,40,0,0,0,0-80H72a8,8,0,0,0,0,16h96a24,24,0,0,1,0,48H72a48,48,0,0,0,0,96h97a32,32,0,1,0,31-40Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,200,216Z"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 256 256"><path d="M224,127.17a96.48,96.48,0,0,1-2.39,22.18A24,24,0,0,1,198.21,168H152a24,24,0,0,0-24,24,24,24,0,0,1-32,22.61C58.73,201.44,32,169.81,32,128a96,96,0,0,1,95-96C179.84,31.47,223.55,74.35,224,127.17Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></symbol>
+  <symbol id="i-code" viewBox="0 0 256 256"><path d="M240,128l-48,40H64L16,128,64,88H192Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></symbol>
+  <symbol id="i-bug-beetle" viewBox="0 0 256 256"><path d="M200,112v48a72,72,0,0,1-72,72h0a72,72,0,0,1-72-72V112Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M208,152h16a8,8,0,0,0,0-16H208V120h16a8,8,0,0,0,0-16H207.6a79.76,79.76,0,0,0-21.44-46.85l19.5-19.49a8,8,0,0,0-11.32-11.32l-20.29,20.3a79.74,79.74,0,0,0-92.1,0L61.66,26.34A8,8,0,0,0,50.34,37.66l19.5,19.49A79.76,79.76,0,0,0,48.4,104H32a8,8,0,0,0,0,16H48v16H32a8,8,0,0,0,0,16H48v8c0,2.7.14,5.37.4,8H32a8,8,0,0,0,0,16H51.68a80,80,0,0,0,152.64,0H224a8,8,0,0,0,0-16H207.6c.26-2.63.4-5.3.4-8ZM128,48a64.07,64.07,0,0,1,63.48,56h-127A64.07,64.07,0,0,1,128,48Zm8,175.48V144a8,8,0,0,0-16,0v79.48A64.07,64.07,0,0,1,64,160V120H192v40A64.07,64.07,0,0,1,136,223.48Z"/></symbol>
+  <symbol id="i-rocket-launch" viewBox="0 0 256 256"><path d="M184,120v61.65a8,8,0,0,1-2.34,5.65l-34.35,34.35a8,8,0,0,1-13.57-4.53L128,176ZM136,72H74.35a8,8,0,0,0-5.65,2.34L34.35,108.69a8,8,0,0,0,4.53,13.57L80,128ZM40,216c37.65,0,50.69-19.69,54.56-28.18L68.18,161.44C59.69,165.31,40,178.35,40,216Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-lightning" viewBox="0 0 256 256"><path d="M96,240l16-80L48,136,160,16,144,96l64,24Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></symbol>
+  <symbol id="i-chats-circle" viewBox="0 0 256 256"><path d="M231.66,213.73a8,8,0,0,1-9.93,9.93L194,215.5A72.05,72.05,0,0,1,92.06,175.89h0c1.31.07,2.62.11,3.94.11a72,72,0,0,0,67.93-95.88h0A72,72,0,0,1,223.5,186Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></symbol>
+  <symbol id="i-squares-four" viewBox="0 0 256 256"><path d="M112,56v48a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8h48A8,8,0,0,1,112,56Zm88-8H152a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V56A8,8,0,0,0,200,48Zm-96,96H56a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V152A8,8,0,0,0,104,144Zm96,0H152a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V152A8,8,0,0,0,200,144Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M200,136H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48ZM104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Z"/></symbol>
+  <symbol id="i-cooking-pot" viewBox="0 0 256 256"><path d="M216,80V184a24,24,0,0,1-24,24H64a24,24,0,0,1-24-24V80Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M88,48V16a8,8,0,0,1,16,0V48a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,128,56Zm32,0a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V48A8,8,0,0,0,160,56Zm92.8,46.4L224,124v60a32,32,0,0,1-32,32H64a32,32,0,0,1-32-32V124L3.2,102.4a8,8,0,0,1,9.6-12.8L32,104V80a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8v24l19.2-14.4a8,8,0,0,1,9.6,12.8ZM208,88H48v96a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16Z"/></symbol>
+  <symbol id="i-github-logo" viewBox="0 0 256 256"><path d="M208,104v8a48,48,0,0,1-48,48H136a32,32,0,0,1,32,32v40H104V192a32,32,0,0,1,32-32H112a48,48,0,0,1-48-48v-8a49.28,49.28,0,0,1,8.51-27.3A51.92,51.92,0,0,1,76,32a52,52,0,0,1,43.83,24h32.34A52,52,0,0,1,196,32a51.92,51.92,0,0,1,3.49,44.7A49.28,49.28,0,0,1,208,104Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M208.3,75.68A59.74,59.74,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58,58,0,0,0,208.3,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.76,41.76,0,0,1,200,104Z"/></symbol>
+  <symbol id="i-globe-simple" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 256 256"><path d="M224,56V208l-32-16-32,16-32-16L96,208,64,192,32,208V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol>
+  <symbol id="i-robot" viewBox="0 0 256 256"><path d="M200,56H56A24,24,0,0,0,32,80V192a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56ZM164,184H92a20,20,0,0,1,0-40h72a20,20,0,0,1,0,40Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M200,48H136V16a8,8,0,0,0-16,0V48H56A32,32,0,0,0,24,80V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32V80A32,32,0,0,0,200,48Zm16,144a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V80A16,16,0,0,1,56,64H200a16,16,0,0,1,16,16ZM72,108a12,12,0,1,1,12,12A12,12,0,0,1,72,108Zm88,0a12,12,0,1,1,12,12A12,12,0,0,1,160,108Zm4,28H92a28,28,0,0,0,0,56h72a28,28,0,0,0,0-56Zm-24,16v24H116V152ZM80,164a12,12,0,0,1,12-12h8v24H92A12,12,0,0,1,80,164Zm84,12h-8V152h8a12,12,0,0,1,0,24Z"/></symbol>
+  <symbol id="i-storefront" viewBox="0 0 256 256"><path d="M224,96v16a32,32,0,0,1-64,0V96H96v16a32,32,0,0,1-64,0V96L46.34,45.8A8,8,0,0,1,54,40H202a8,8,0,0,1,7.69,5.8Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M231.69,93.81,217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.81A7.94,7.94,0,0,0,24,96v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96A7.94,7.94,0,0,0,231.69,93.81ZM54,48H202l11.42,40H42.61Zm98,56v8a24,24,0,0,1-48,0v-8ZM51.06,132.2A24,24,0,0,1,40,112v-8H88v8a24,24,0,0,1-35.12,21.26A7.88,7.88,0,0,0,51.06,132.2ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm16-96a24,24,0,0,1-11.07,20.2,8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48Z"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 256 256"><path d="M240,128a80,80,0,0,1-80,80H72A56,56,0,1,1,85.92,97.74l0,.1A80,80,0,0,1,240,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 256 256"><path d="M184,128a56,56,0,1,1-56-56A56,56,0,0,1,184,128Z" style="fill:var(--i-fill,currentColor);opacity:var(--i-o,.2)"/><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+  <symbol id="b-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="b-arrow-right" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol>
+  <symbol id="b-arrow-up-right" viewBox="0 0 256 256"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></symbol>
+  <symbol id="b-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol>
+  <symbol id="b-paper-plane-right" viewBox="0 0 256 256"><path d="M233.86,110.48,65.8,14.58A20,20,0,0,0,37.15,38.64L67.33,128,37.15,217.36A20,20,0,0,0,56,244a20.1,20.1,0,0,0,9.81-2.58l.09-.06,168-96.07a20,20,0,0,0,0-34.81ZM63.19,215.26,88.61,140H144a12,12,0,0,0,0-24H88.61L63.18,40.72l152.76,87.17Z"/></symbol>
+  <symbol id="b-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol>
+  </svg>
   <!-- ═══ Небо: мягкие облака на фоне всей страницы ═══ -->
   <div class="sky" aria-hidden="true">
     <div class="sky__cloud c1"></div>
@@ -78,7 +115,7 @@
           Shuaq — инженерная студия полного цикла. Проектируем и запускаем сайты, серверы, Telegram- и WhatsApp-ботов и автоматизацию для кафе, ресторанов и любого бизнеса.
         </p>
         <div class="hero__actions reveal">
-          <a href="#contact" class="btn btn--ink btn--lg magnetic">Получить расчёт <span class="btn__arrow">→</span></a>
+          <a href="#contact" class="btn btn--ink btn--lg magnetic">Получить расчёт <span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></span></a>
           <a href="#work" class="btn btn--glass btn--lg">Смотреть проекты</a>
         </div>
         <ul class="hero__proof reveal">
@@ -92,14 +129,14 @@
         <canvas id="scene" aria-label="Трёхмерная сцена: облако, солнце, телефон с ботом, сервер, окно браузера и чашка кофе"></canvas>
         <div class="scene-label" id="sceneLabel"></div>
         <div class="hero__float hero__float--a glass">
-          <span class="ico ico--mint">✓</span>
+          <span class="puff puff--sm" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>
           <div><b>Новый заказ</b><small>2 капучино · 4 200 ₸</small></div>
         </div>
         <div class="hero__float hero__float--b glass">
-          <span class="ico ico--sky">✈</span>
+          <span class="puff puff--sm" data-tone="sky" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-paper-plane-tilt"/></svg></span>
           <div><b>Заявка с сайта</b><small>уже в Telegram · только что</small></div>
         </div>
-        <p class="hero__hint">Наведите на объект</p>
+        <p class="hero__hint"><svg class="i" aria-hidden="true"><use href="#i-cursor-click"/></svg> Наведите на объект</p>
       </div>
     </section>
 
@@ -129,6 +166,7 @@
             <div class="mini-browser"><i></i><i></i><i></i><div class="mb-hero"></div><div class="mb-row"><span></span><span></span><span></span></div></div>
           </div>
           <div class="svc__body">
+            <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-browsers"/></svg></span>
             <span class="svc__num">01</span>
             <h3>Сайты и лендинги</h3>
             <p>Лендинги, корпоративные сайты, интернет-магазины и каталоги. Быстрые, адаптивные, с анимациями и формами, которые отправляют заявки прямо в Telegram.</p>
@@ -137,9 +175,7 @@
         </article>
 
         <article class="svc tilt reveal" data-tone="lav">
-          <div class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="9" rx="4.5"/><rect x="8" y="20" width="32" height="9" rx="4.5"/><rect x="8" y="32" width="32" height="9" rx="4.5"/><circle cx="33" cy="12.5" r="1.8" class="led"/><circle cx="33" cy="24.5" r="1.8" class="led"/><circle cx="33" cy="36.5" r="1.8" class="led"/></svg>
-          </div>
+          <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-hard-drives"/></svg></span>
           <span class="svc__num">02</span>
           <h3>Серверы и backend</h3>
           <p>API, базы данных, личные кабинеты, CRM-панели и админки. Настраиваем хостинг, бэкапы и мониторинг.</p>
@@ -147,9 +183,7 @@
         </article>
 
         <article class="svc tilt reveal" data-tone="sky">
-          <div class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M41 9 6.5 22.3c-1.6.6-1.5 2.9.1 3.4l8.4 2.6 3.2 10c.5 1.5 2.4 1.9 3.4.7l4.5-5 8.6 6.3c1.3 1 3.1.2 3.5-1.4L44 11.8c.4-1.8-1.3-3.4-3-2.8Z"/><path d="m15.5 28 17-11" class="line"/></svg>
-          </div>
+          <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-telegram-logo"/></svg></span>
           <span class="svc__num">03</span>
           <h3>Telegram-боты</h3>
           <p>Приём заказов, запись, рассылки, оплата, уведомления сотрудникам и мини-приложения прямо внутри Telegram.</p>
@@ -157,9 +191,7 @@
         </article>
 
         <article class="svc tilt reveal" data-tone="mint">
-          <div class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M24 6a18 18 0 0 0-15.5 27.2L6 42l9-2.4A18 18 0 1 0 24 6Z"/><path d="M18 16.5c.6-1 1.6-1 2.2 0l1.6 3.2c.3.6.1 1.3-.4 1.7l-1 .8c1 2.2 2.8 4 5 5l.8-1c.4-.5 1.1-.7 1.7-.4l3.2 1.6c1 .6 1 1.6 0 2.2-3.4 2.4-7.8.4-10.8-2.6S15.6 19.9 18 16.5Z" class="fill-white"/></svg>
-          </div>
+          <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></span>
           <span class="svc__num">04</span>
           <h3>WhatsApp-боты</h3>
           <p>Официальный WhatsApp Business API: автоответы, меню, приём заказов и записи там, где уже сидят ваши клиенты.</p>
@@ -167,9 +199,7 @@
         </article>
 
         <article class="svc tilt reveal" data-tone="peach">
-          <div class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><path d="M10 18h24v10a12 12 0 0 1-12 12h0a12 12 0 0 1-12-12V18Z"/><path d="M34 21h2.5a5 5 0 0 1 0 10H33" class="line"/><path d="M17 8c0 3 3 3 3 6M24 6c0 3 3 3 3 6" class="line"/></svg>
-          </div>
+          <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-coffee"/></svg></span>
           <span class="svc__num">05</span>
           <h3>Автоматизация HoReCa</h3>
           <p>QR-меню, онлайн-заказы и бронь, чеки на кухню, учёт и аналитика для кафе, ресторанов и доставки.</p>
@@ -177,9 +207,7 @@
         </article>
 
         <article class="svc svc--half tilt reveal" data-tone="sun">
-          <div class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="7"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.6 10.6l4.2 4.2M33.2 33.2l4.2 4.2M10.6 37.4l4.2-4.2M33.2 14.8l4.2-4.2" class="line"/></svg>
-          </div>
+          <span class="puff puff--lg svc__icon" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
           <span class="svc__num">06</span>
           <h3>AI и интеграции</h3>
           <p>AI-ассистенты с базой знаний компании, компьютерное зрение, интеграции с CRM, 1С, Google Sheets и платёжками.</p>
@@ -196,27 +224,27 @@
           <h2 class="reveal">Бот принимает заказ, кухня уже готовит</h2>
           <p class="section__lead reveal">Гость сканирует QR или пишет в WhatsApp — бот показывает меню, собирает заказ, принимает оплату и сразу отправляет чек на кухню. Вы видите выручку и популярные блюда в реальном времени.</p>
           <ul class="checks reveal">
-            <li><span>✓</span> QR-меню с фото и стоп-листом</li>
-            <li><span>✓</span> Заказы и бронь столов в Telegram и WhatsApp</li>
-            <li><span>✓</span> Уведомления на кухню и курьерам</li>
-            <li><span>✓</span> Оплата онлайн и интеграция с кассой</li>
-            <li><span>✓</span> Отзывы, бонусы и рассылки постоянным гостям</li>
+            <li><span class="puff puff--xs" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#b-check"/></svg></span> QR-меню с фото и стоп-листом</li>
+            <li><span class="puff puff--xs" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#b-check"/></svg></span> Заказы и бронь столов в Telegram и WhatsApp</li>
+            <li><span class="puff puff--xs" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#b-check"/></svg></span> Уведомления на кухню и курьерам</li>
+            <li><span class="puff puff--xs" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#b-check"/></svg></span> Оплата онлайн и интеграция с кассой</li>
+            <li><span class="puff puff--xs" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#b-check"/></svg></span> Отзывы, бонусы и рассылки постоянным гостям</li>
           </ul>
-          <a href="#contact" class="btn btn--ink reveal" data-service="Автоматизация для кафе / ресторана">Автоматизировать заведение <span class="btn__arrow">→</span></a>
+          <a href="#contact" class="btn btn--ink reveal" data-service="Автоматизация для кафе / ресторана">Автоматизировать заведение <span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></span></a>
         </div>
 
         <div class="horeca__demo reveal">
           <div class="phone tilt-soft">
             <div class="phone__notch"></div>
             <div class="phone__top">
-              <span class="phone__ava">☕</span>
+              <span class="phone__ava"><svg class="i" aria-hidden="true"><use href="#i-coffee"/></svg></span>
               <div><b>Coffee Bot</b><small id="botStatus">онлайн</small></div>
             </div>
             <div class="chat" id="chat" aria-live="polite"></div>
-            <div class="phone__input"><span>Сообщение</span><i>➤</i></div>
+            <div class="phone__input"><span>Сообщение</span><i><svg class="i" aria-hidden="true"><use href="#b-paper-plane-right"/></svg></i></div>
           </div>
           <div class="ticket glass" id="ticket">
-            <small>Кухня · заказ <b>#248</b></small>
+            <small><svg class="i" aria-hidden="true"><use href="#i-cooking-pot"/></svg> Кухня · заказ <b>#248</b></small>
             <ul><li>2 × Капучино</li><li>1 × Круассан</li></ul>
             <span class="ticket__badge">Готовится</span>
           </div>
@@ -224,10 +252,10 @@
       </div>
 
       <div class="horeca__stats">
-        <div class="stat reveal"><b>24/7</b><span>приём заказов без администратора</span></div>
-        <div class="stat reveal"><b>0 сек</b><span>от оплаты до чека на кухне</span></div>
-        <div class="stat reveal"><b>2 канала</b><span>Telegram и WhatsApp в одной системе</span></div>
-        <div class="stat reveal"><b>1 панель</b><span>заказы, бронь, отзывы и выручка</span></div>
+        <div class="stat reveal"><span class="puff puff--md" data-tone="sky" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span><b>24/7</b><span>приём заказов без администратора</span></div>
+        <div class="stat reveal"><span class="puff puff--md" data-tone="sun" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-lightning"/></svg></span><b>0 сек</b><span>от оплаты до чека на кухне</span></div>
+        <div class="stat reveal"><span class="puff puff--md" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-chats-circle"/></svg></span><b>2 канала</b><span>Telegram и WhatsApp в одной системе</span></div>
+        <div class="stat reveal"><span class="puff puff--md" data-tone="lav" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-squares-four"/></svg></span><b>1 панель</b><span>заказы, бронь, отзывы и выручка</span></div>
       </div>
     </section>
 
@@ -256,12 +284,12 @@
         <p class="section__lead reveal">Каждый этап вы утверждаете. С первой недели видите живую демо-ссылку и можете покликать сайт с телефона.</p>
       </header>
       <ol class="process">
-        <li class="step reveal"><span class="step__n">1</span><h3>Бриф</h3><p>Созвон 20 минут: цели, задачи, сроки. Фиксируем ТЗ и смету.</p><small>1–2 дня</small></li>
-        <li class="step reveal"><span class="step__n">2</span><h3>Прототип</h3><p>Структура, тексты и сценарии ботов — до того, как рисовать.</p><small>2–4 дня</small></li>
-        <li class="step reveal"><span class="step__n">3</span><h3>Дизайн</h3><p>Первый экран в вашем стиле, затем весь сайт и мобильная версия.</p><small>3–7 дней</small></li>
-        <li class="step reveal"><span class="step__n">4</span><h3>Разработка</h3><p>Код, сервер, бот, интеграции. Демо-ссылка с первой недели.</p><small>5–12 дней</small></li>
-        <li class="step reveal"><span class="step__n">5</span><h3>Тесты</h3><p>Проверяем формы, скорость и все сценарии на реальных устройствах.</p><small>2–3 дня</small></li>
-        <li class="step reveal"><span class="step__n">6</span><h3>Запуск</h3><p>Домен, SSL, видео-инструкция и поддержка после релиза.</p><small>1–2 дня</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="sky" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-chat-circle-text"/></svg></span><span class="step__n">01</span><h3>Бриф</h3><p>Созвон 20 минут: цели, задачи, сроки. Фиксируем ТЗ и смету.</p><small>1–2 дня</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="lav" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-path"/></svg></span><span class="step__n">02</span><h3>Прототип</h3><p>Структура, тексты и сценарии ботов — до того, как рисовать.</p><small>2–4 дня</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="rose" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></span><span class="step__n">03</span><h3>Дизайн</h3><p>Первый экран в вашем стиле, затем весь сайт и мобильная версия.</p><small>3–7 дней</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg></span><span class="step__n">04</span><h3>Разработка</h3><p>Код, сервер, бот, интеграции. Демо-ссылка с первой недели.</p><small>5–12 дней</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="sun" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-bug-beetle"/></svg></span><span class="step__n">05</span><h3>Тесты</h3><p>Проверяем формы, скорость и все сценарии на реальных устройствах.</p><small>2–3 дня</small></li>
+        <li class="step reveal"><span class="puff puff--md step__ico" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-rocket-launch"/></svg></span><span class="step__n">06</span><h3>Запуск</h3><p>Домен, SSL, видео-инструкция и поддержка после релиза.</p><small>1–2 дня</small></li>
       </ol>
     </section>
 
@@ -274,6 +302,7 @@
       </header>
       <div class="plans">
         <article class="plan reveal">
+          <span class="puff puff--md plan__ico" data-tone="sky" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-globe-simple"/></svg></span>
           <h3>Лендинг</h3>
           <p class="plan__for">Для рекламы, услуги или нового продукта</p>
           <p class="plan__price"><small>от</small> 120 000 ₸</p>
@@ -283,6 +312,7 @@
         </article>
         <article class="plan plan--hot reveal">
           <span class="plan__badge">Популярно</span>
+          <span class="puff puff--md plan__ico" data-tone="peach" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-robot"/></svg></span>
           <h3>Бот + автоматизация</h3>
           <p class="plan__for">Для кафе, салонов, клиник и сервисов</p>
           <p class="plan__price"><small>от</small> 150 000 ₸</p>
@@ -291,6 +321,7 @@
           <a href="#contact" class="btn btn--ink" data-service="Telegram / WhatsApp бот">Выбрать</a>
         </article>
         <article class="plan reveal">
+          <span class="puff puff--md plan__ico" data-tone="lav" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-storefront"/></svg></span>
           <h3>Сайт или магазин</h3>
           <p class="plan__for">Для компаний и ритейла</p>
           <p class="plan__price"><small>от</small> 250 000 ₸</p>
@@ -299,6 +330,7 @@
           <a href="#contact" class="btn btn--glass" data-service="Корпоративный сайт / магазин">Выбрать</a>
         </article>
         <article class="plan reveal">
+          <span class="puff puff--md plan__ico" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg></span>
           <h3>Web-сервис</h3>
           <p class="plan__for">Для стартапов и сложных задач</p>
           <p class="plan__price"><small>от</small> 800 000 ₸</p>
@@ -333,8 +365,8 @@
           <h2 class="reveal">Расскажите о задаче — ответим в&nbsp;течение часа</h2>
           <p class="section__lead reveal">Бесплатно оценим проект, предложим решение и сроки. Без навязчивых звонков.</p>
           <div class="contact__links reveal">
-            <a href="https://t.me/dyman_kz" target="_blank" rel="noopener" class="contact-chip"><span class="ico ico--sky">✈</span><div><b>Telegram</b><small>@dyman_kz</small></div></a>
-            <a href="#" target="_blank" rel="noopener" class="contact-chip" id="waLink" hidden><span class="ico ico--mint">✆</span><div><b>WhatsApp</b><small id="waText"></small></div></a>
+            <a href="https://t.me/dyman_kz" target="_blank" rel="noopener" class="contact-chip"><span class="puff puff--sm" data-tone="sky" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-telegram-logo"/></svg></span><div><b>Telegram</b><small>@dyman_kz</small></div></a>
+            <a href="#" target="_blank" rel="noopener" class="contact-chip" id="waLink" hidden><span class="puff puff--sm" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></span><div><b>WhatsApp</b><small id="waText"></small></div></a>
           </div>
         </div>
 
@@ -373,16 +405,16 @@
             </label>
           </div>
           <label class="field"><span>Коротко о задаче</span><textarea name="description" rows="3" placeholder="Например: кофейня в Актау, нужен бот для заказов навынос и QR-меню"></textarea></label>
-          <button type="submit" class="btn btn--ink btn--lg btn--block" id="submitBtn"><span class="btn__text">Отправить заявку</span> <span class="btn__arrow">→</span></button>
+          <button type="submit" class="btn btn--ink btn--lg btn--block" id="submitBtn"><span class="btn__text">Отправить заявку</span> <span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></span></button>
           <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку контактных данных для ответа на заявку.</p>
           <p class="form__error" id="formError" role="alert"></p>
         </form>
 
         <div class="form-success" id="formSuccess" hidden>
-          <div class="form-success__ico">✓</div>
+          <span class="puff puff--xl" data-tone="mint" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-check-circle"/></svg></span>
           <h3>Заявка принята!</h3>
           <p>Код заявки <b id="orderId">—</b>. Менеджер напишет вам в ближайшее время.</p>
-          <a class="btn btn--ink" id="tgFollow" href="https://t.me/dyman_kz" target="_blank" rel="noopener">Продолжить в Telegram →</a>
+          <a class="btn btn--ink" id="tgFollow" href="https://t.me/dyman_kz" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-telegram-logo"/></svg> Продолжить в Telegram</a>
         </div>
       </div>
     </section>
@@ -403,7 +435,7 @@
 
   <!-- ═══ Модальное окно проекта ═══ -->
   <dialog class="modal" id="projectModal" aria-labelledby="modalTitle">
-    <button class="modal__close" id="modalClose" aria-label="Закрыть">✕</button>
+    <button class="modal__close" id="modalClose" aria-label="Закрыть"><svg class="i" aria-hidden="true"><use href="#b-x"/></svg></button>
     <div class="modal__cover" id="modalCover"></div>
     <div class="modal__body">
       <p class="modal__kicker" id="modalKicker"></p>

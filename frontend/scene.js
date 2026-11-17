@@ -105,7 +105,7 @@ function addItem(group, { label: text, target, pos, rot = [0, 0, 0], amp = 0.18,
   const base = mesh(sphereGeo, M.cloud, 0, -0.55, 0);
   base.scale.set(2.6, 0.6, 1.05);
   g.add(base);
-  addItem(g, { label: "☁ Облачные решения под ключ", target: "#contact", pos: [0, -0.4, 0], amp: 0.12, speed: 0.7, delay: 0, scale: 1 });
+  addItem(g, { label: "Облачные решения под ключ", target: "#contact", pos: [0, -0.4, 0], amp: 0.12, speed: 0.7, delay: 0, scale: 1 });
 }
 
 // 2. Солнце (Шуақ — «солнечный свет»)

@@ -156,7 +156,7 @@ function cardHTML(p, i) {
   return `
     <button class="card" data-id="${p.id}" style="animation-delay:${i * 0.05}s" aria-label="Подробнее о проекте ${p.title}">
       ${coverHTML(p)}
-      <span class="card__open" aria-hidden="true">↗</span>
+      <span class="card__open"><svg class="i" aria-hidden="true"><use href="#b-arrow-up-right"/></svg></span>
       <div class="card__body">
         <span class="card__kicker">${p.kicker}</span>
         <h3>${p.title}</h3>
@@ -228,9 +228,9 @@ function openProject(id) {
   $("#modalResult").textContent = p.result;
   $("#modalTags").innerHTML = p.tags.map(t => `<li>${t}</li>`).join("");
   const links = [];
-  if (p.links.live) links.push(`<a class="btn btn--ink" href="${p.links.live}" target="_blank" rel="noopener">Открыть сайт ↗</a>`);
-  if (p.links.github) links.push(`<a class="btn btn--glass" href="${p.links.github}" target="_blank" rel="noopener">Код на GitHub ↗</a>`);
-  links.push(`<a class="btn btn--glass" href="#contact" data-close>Хочу похожий проект</a>`);
+  if (p.links.live) links.push(`<a class="btn btn--ink" href="${p.links.live}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-globe-simple"/></svg> Открыть сайт</a>`);
+  if (p.links.github) links.push(`<a class="btn btn--glass" href="${p.links.github}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github-logo"/></svg> Код на GitHub</a>`);
+  links.push(`<a class="btn btn--glass" href="#contact" data-close>Хочу похожий проект <svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></a>`);
   $("#modalLinks").innerHTML = links.join("");
   modal.showModal();
 }
