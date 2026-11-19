@@ -387,6 +387,11 @@ function updateCalculator() {
   calcTimeEl.textContent = `${totalDays}–${Math.round(totalDays * 1.35)} рабочих дней`;
   calcStackEl.innerHTML = currentStack.slice(0, 5).map((t) => `<li>${t}</li>`).join("");
 
+  const calcToOrderLink = $("#calcToOrderLink");
+  if (calcToOrderLink) {
+    calcToOrderLink.href = `/order?service=${encodeURIComponent(typeData.formService || selectedType)}`;
+  }
+
   return {
     selectedType,
     typeData,

@@ -89,8 +89,9 @@
         <a href="#work">Проекты</a>
         <a href="#process">Как работаем</a>
         <a href="#pricing">Тарифы</a>
+        <a href="/order">Онлайн-бриф</a>
       </nav>
-      <a href="#contact" class="btn btn--ink btn--sm nav__cta">Обсудить проект</a>
+      <a href="/order" class="btn btn--ink btn--sm nav__cta">Заполнить бриф</a>
       <button class="nav__burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
     </div>
     <div class="nav__sheet" id="navSheet">
@@ -99,7 +100,8 @@
       <a href="#work">Проекты</a>
       <a href="#process">Как работаем</a>
       <a href="#pricing">Тарифы</a>
-      <a href="#contact" class="btn btn--ink">Обсудить проект</a>
+      <a href="/order">Онлайн-бриф проекта</a>
+      <a href="/order" class="btn btn--ink">Заполнить бриф</a>
     </div>
   </header>
 
@@ -115,8 +117,8 @@
           Shuaq (Шуақ) — проектируем и запускаем масштабируемые web-платформы, автономные AI-агенты, корпоративные API и IoT-системы под ключ за 7–21 день.
         </p>
         <div class="hero__actions reveal">
-          <a href="#calculator" class="btn btn--ink btn--lg magnetic">Рассчитать проект <span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></span></a>
-          <a href="#work" class="btn btn--glass btn--lg">Смотреть системы</a>
+          <a href="#calculator" class="btn btn--ink btn--lg magnetic">Рассчитать смету <span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="#b-arrow-right"/></svg></span></a>
+          <a href="/order" class="btn btn--glass btn--lg">Заполнить онлайн-бриф →</a>
         </div>
         <ul class="hero__proof reveal">
           <li><b data-count="9">9</b><span>production-систем в портфолио</span></li>
@@ -351,9 +353,14 @@
               <li>React</li><li>FastAPI</li><li>PostgreSQL</li><li>Kaspi Pay</li><li>WhatsApp</li>
             </ul>
           </div>
-          <button type="button" class="btn btn--ink btn--lg" id="applyCalcBtn">
-            Перенести расчет в заявку <span class="btn__arrow"><svg class="i"><use href="#b-arrow-right"/></svg></span>
-          </button>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <button type="button" class="btn btn--ink btn--lg" id="applyCalcBtn">
+              Перенести расчет в заявку <span class="btn__arrow"><svg class="i"><use href="#b-arrow-right"/></svg></span>
+            </button>
+            <a href="/order" class="btn btn--glass btn--lg" id="calcToOrderLink">
+              Открыть подробный бриф →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -617,7 +624,7 @@
         <p><i>Шуақ</i> — по-казахски «созидательный солнечный луч». Создаем масштабируемые цифровые технологии мирового уровня для амбициозных компаний.</p>
       </div>
       <nav class="footer__nav" aria-label="Нижнее меню">
-        <a href="#services">Услуги</a><a href="#calculator">Калькулятор</a><a href="#work">Проекты</a><a href="#pricing">Тарифы</a><a href="#contact">Контакты</a>
+        <a href="#services">Услуги</a><a href="/order">Онлайн-бриф</a><a href="#calculator">Калькулятор</a><a href="#work">Проекты</a><a href="#pricing">Тарифы</a><a href="#contact">Контакты</a>
       </nav>
       <p class="footer__copy">© <span id="year">2026</span> Shuaq Digital Technology Studio · Казахстан и Global</p>
     </div>

@@ -72,6 +72,8 @@ function createOrder(orderData) {
     id: generateOrderId(orders),
     createdAt: new Date().toISOString(),
     name: orderData.name || "Аноним",
+    company: orderData.company || "",
+    phone: orderData.phone || "",
     telegram: orderData.telegram || "",
     serviceType: orderData.serviceType || "Web & SaaS",
     description: orderData.description || "",

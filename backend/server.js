@@ -73,9 +73,11 @@ app.get("/api/health", (req, res) => {
 app.post("/api/orders", rateLimitOrders, async (req, res) => {
   try {
     const rawName = sanitize(req.body.name, 100);
+    const rawCompany = sanitize(req.body.company, 120);
     const rawTelegram = sanitize(req.body.telegram, 120);
+    const rawPhone = sanitize(req.body.phone, 120);
     const rawService = sanitize(req.body.serviceType, 120);
-    const rawDesc = sanitize(req.body.description, 2000);
+    const rawDesc = sanitize(req.body.description, 3000);
     const rawBudget = sanitize(req.body.budget, 100);
     const rawDeadline = sanitize(req.body.deadline, 100);
     const rawEstimate = sanitize(req.body.estimatedPrice, 100);
@@ -83,15 +85,17 @@ app.post("/api/orders", rateLimitOrders, async (req, res) => {
       ? req.body.selectedModules.map((m) => sanitize(m, 80)).filter(Boolean)
       : [];
 
-    if (!rawTelegram && !rawName) {
+    if (!rawTelegram && !rawName && !rawPhone) {
       return res.status(400).json({
-        error: "Пожалуйста, укажите имя и контакт (Telegram / телефон) для связи"
+        error: "Пожалуйста, укажите имя и хотя бы один контакт (Telegram или телефон) для связи"
       });
     }
 
     // Save order in DB
     const order = createOrder({
       name: rawName,
+      company: rawCompany,
+      phone: rawPhone,
       telegram: rawTelegram,
       serviceType: rawService,
       description: rawDesc,
@@ -167,6 +171,11 @@ app.patch("/api/orders/:id", requireAdmin, (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Ошибка обновления заказа" });
   }
+});
+
+// Specific page routes
+app.get(["/order", "/brief"], (req, res) => {
+  res.sendFile(path.join(frontendPath, "order.html"));
 });
 
 // Fallback to frontend index.html

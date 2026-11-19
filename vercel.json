@@ -2,5 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "frontend",
   "cleanUrls": true,
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/brief", "destination": "/order.html" }
+  ]
 }

@@ -8,9 +8,9 @@ const MANAGER_USERNAME = process.env.TELEGRAM_MANAGER_USERNAME || "dyman_kz";
  * Format order into a clean HTML message for Telegram
  */
 function formatTelegramMessage(order) {
-  const tgHandle = order.telegram.startsWith("@")
-    ? order.telegram
-    : `@${order.telegram}`;
+  const tgHandle = order.telegram ? (order.telegram.startsWith("@") ? order.telegram : `@${order.telegram}`) : "—";
+  const phoneLine = order.phone ? `\n📞 <b>Телефон/WA:</b> <code>${escapeHtml(order.phone)}</code>` : "";
+  const companyLine = order.company ? `\n🏢 <b>Компания:</b> ${escapeHtml(order.company)}` : "";
 
   const modulesLine = order.selectedModules && order.selectedModules.length
     ? `\n🧩 <b>Выбранные модули:</b> ${escapeHtml(order.selectedModules.join(", "))}`
@@ -26,8 +26,8 @@ function formatTelegramMessage(order) {
 🆔 <b>Код заказа:</b> <code>${order.id}</code>
 📅 <b>Время:</b> ${new Date(order.createdAt).toLocaleString("ru-RU", { timeZone: "Asia/Almaty" })}
 
-👤 <b>Клиент:</b> ${escapeHtml(order.name)}
-💬 <b>Контакт:</b> ${escapeHtml(tgHandle)}
+👤 <b>Клиент:</b> ${escapeHtml(order.name)}${companyLine}
+💬 <b>Telegram:</b> ${escapeHtml(tgHandle)}${phoneLine}
 🎯 <b>Тип проекта:</b> ${escapeHtml(order.serviceType)}
 💰 <b>Бюджет:</b> ${escapeHtml(order.budget)}${estimateLine}${modulesLine}
 ⏱ <b>Сроки:</b> ${escapeHtml(order.deadline)}
