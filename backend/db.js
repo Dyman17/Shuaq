@@ -18,12 +18,12 @@ function initDB() {
         telegram: "@Dyman17",
         serviceType: "Web & SaaS Платформа",
         description: "Разработка B2B платформы с личным кабинетом и Kaspi Pay",
-        budget: "850 000 ₸",
+        budget: "380 000 ₸",
         deadline: "В течение месяца",
         status: "approved",
         adminNotes: "Демонстрационный заказ",
         selectedModules: ["Kaspi QR & Kaspi Pay", "AI База знаний (RAG)"],
-        estimatedPrice: "от 850 000 ₸"
+        estimatedPrice: "от 380 000 ₸"
       }
     ];
     fs.writeFileSync(DB_FILE, JSON.stringify(initialOrders, null, 2), "utf8");

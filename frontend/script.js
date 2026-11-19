@@ -268,7 +268,7 @@ function addMsg(m) {
 }
 
 async function playChat() {
-  for (;;) {
+  for (; ;) {
     chat.innerHTML = "";
     ticket.classList.remove("is-on");
     for (const m of SCRIPT) {
@@ -304,39 +304,39 @@ const CALC_CONFIG = {
   types: {
     saas: {
       name: "Web & SaaS Платформа",
-      basePrice: 850000,
+      basePrice: 380000,
       baseDays: 16,
       formService: "Web & SaaS Платформа",
       stack: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"]
     },
     ai: {
       name: "AI & Automation Suite",
-      basePrice: 650000,
+      basePrice: 290000,
       baseDays: 10,
       formService: "AI & Automation Suite",
       stack: ["Python", "OpenAI", "RAG", "Telegram API", "WhatsApp"]
     },
     portal: {
       name: "Digital Foundation",
-      basePrice: 450000,
+      basePrice: 200000,
       baseDays: 8,
       formService: "Digital Foundation",
       stack: ["Astro", "React", "TypeScript", "SEO", "Tailwind"]
     },
     edge: {
       name: "Enterprise & Custom SaaS",
-      basePrice: 1400000,
+      basePrice: 690000,
       baseDays: 24,
       formService: "Enterprise & Custom SaaS",
       stack: ["YOLOv8", "ESP32", "Python", "React", "WebSockets"]
     }
   },
   modules: {
-    kaspi: { name: "Kaspi Pay & QR", price: 80000, days: 2, tag: "Kaspi Pay" },
-    whatsapp: { name: "WhatsApp Cloud Business", price: 90000, days: 3, tag: "WhatsApp API" },
-    rag: { name: "AI База знаний (RAG)", price: 120000, days: 4, tag: "Vector RAG" },
-    roles: { name: "Личные кабинеты и роли", price: 110000, days: 4, tag: "RBAC & JWT" },
-    care: { name: "Пакет Shuaq Care SLA", price: 65000, days: 0, tag: "SLA 99.9%" }
+    kaspi: { name: "Kaspi Pay & QR", price: 35000, days: 2, tag: "Kaspi Pay" },
+    whatsapp: { name: "WhatsApp Cloud Business", price: 40000, days: 3, tag: "WhatsApp API" },
+    rag: { name: "AI База знаний (RAG)", price: 50000, days: 4, tag: "Vector RAG" },
+    roles: { name: "Личные кабинеты и роли", price: 45000, days: 4, tag: "RBAC & JWT" },
+    care: { name: "Пакет Shuaq Care SLA", price: 29000, days: 0, tag: "SLA 99.9%" }
   }
 };
 
@@ -420,12 +420,14 @@ if (applyCalcBtn) {
     // 2. Бюджет
     const formBudget = $("#formBudget");
     if (formBudget) {
-      if (calcState.totalPrice.includes("450") || calcState.totalPrice.includes("500")) {
-        formBudget.value = "До 500 000 ₸";
-      } else if (calcState.totalPrice.includes("650") || calcState.totalPrice.includes("850") || calcState.totalPrice.includes("1 020")) {
+      if (calcState.totalPrice.includes("200") || calcState.totalPrice.includes("250")) {
+        formBudget.value = "До 250 000 ₸";
+      } else if (calcState.totalPrice.includes("290") || calcState.totalPrice.includes("380") || calcState.totalPrice.includes("455")) {
+        formBudget.value = "250 000 – 500 000 ₸";
+      } else if (calcState.totalPrice.includes("690") || calcState.totalPrice.includes("790")) {
         formBudget.value = "500 000 – 1 000 000 ₸";
       } else {
-        formBudget.value = "1 000 000 – 2 000 000 ₸";
+        formBudget.value = "Более 1 000 000 ₸";
       }
     }
 

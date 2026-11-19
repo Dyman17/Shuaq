@@ -13,17 +13,17 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
 const PRICING_DATA = {
   types: {
-    "Web & SaaS Платформа": { basePrice: 850000, days: 16, short: "Web & SaaS" },
-    "AI & Automation Suite": { basePrice: 650000, days: 10, short: "AI-агенты" },
-    "Digital Foundation": { basePrice: 450000, days: 8, short: "Портал / E-com" },
-    "Enterprise & Custom SaaS": { basePrice: 1800000, days: 26, short: "Enterprise / IoT" }
+    "Web & SaaS Платформа": { basePrice: 380000, days: 16, short: "Web & SaaS" },
+    "AI & Automation Suite": { basePrice: 290000, days: 10, short: "AI-агенты" },
+    "Digital Foundation": { basePrice: 200000, days: 8, short: "Портал / E-com" },
+    "Enterprise & Custom SaaS": { basePrice: 790000, days: 26, short: "Enterprise / IoT" }
   },
   modules: {
-    "Kaspi Pay & Kaspi QR": { price: 80000, days: 2, short: "Kaspi Pay" },
-    "WhatsApp Cloud Business API": { price: 90000, days: 3, short: "WhatsApp API" },
-    "AI База знаний (RAG)": { price: 120000, days: 4, short: "Vector RAG" },
-    "Личные кабинеты & RBAC": { price: 110000, days: 4, short: "RBAC & JWT" },
-    "Сопровождение Shuaq Care": { price: 65000, days: 0, isCare: true, short: "Shuaq Care" }
+    "Kaspi Pay & Kaspi QR": { price: 35000, days: 2, short: "Kaspi Pay" },
+    "WhatsApp Cloud Business API": { price: 40000, days: 3, short: "WhatsApp API" },
+    "AI База знаний (RAG)": { price: 50000, days: 4, short: "Vector RAG" },
+    "Личные кабинеты & RBAC": { price: 45000, days: 4, short: "RBAC & JWT" },
+    "Сопровождение Shuaq Care": { price: 29000, days: 0, isCare: true, short: "Shuaq Care" }
   }
 };
 
@@ -82,7 +82,8 @@ function updateBriefSummary() {
   // Отображение в сайдбаре
   sideType.textContent = typeInfo.short;
   const formattedBase = totalPrice.toLocaleString("ru-RU") + " ₸";
-  const formattedFull = hasCare ? `${formattedBase} + 65 000 ₸/мес` : formattedBase;
+  const careCost = PRICING_DATA.modules["Сопровождение Shuaq Care"].price.toLocaleString("ru-RU");
+  const formattedFull = hasCare ? `${formattedBase} + ${careCost} ₸/мес` : formattedBase;
   sidePrice.textContent = formattedFull;
   sideDays.textContent = `${totalDays}–${Math.round(totalDays * 1.35)} рабочих дней`;
 
@@ -97,14 +98,14 @@ function updateBriefSummary() {
 
   // Синхронизация селектора бюджета
   if (briefBudget) {
-    if (totalPrice < 600000) {
-      briefBudget.value = "До 500 000 ₸";
-    } else if (totalPrice <= 1100000) {
+    if (totalPrice < 250000) {
+      briefBudget.value = "До 250 000 ₸";
+    } else if (totalPrice <= 500000) {
+      briefBudget.value = "250 000 – 500 000 ₸";
+    } else if (totalPrice <= 1000000) {
       briefBudget.value = "500 000 – 1 000 000 ₸";
-    } else if (totalPrice <= 2000000) {
-      briefBudget.value = "1 000 000 – 2 000 000 ₸";
     } else {
-      briefBudget.value = "Более 2 000 000 ₸";
+      briefBudget.value = "Более 1 000 000 ₸";
     }
   }
 
