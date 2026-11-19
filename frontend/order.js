@@ -3,7 +3,7 @@
 // ─────────────────────────────────────────────────────────────
 
 const CONFIG = {
-  telegram: "dyman_kz",
+  telegram: "Dyman17",
   whatsapp: "77071234567",
   apiUrl: window.SHUAQ_API_URL || ""
 };

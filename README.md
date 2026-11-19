@@ -149,7 +149,7 @@ PORT=3000
 ADMIN_API_KEY=shuaq_admin_secret_key_2026 # Секретный ключ для доступа к базе заказов
 TELEGRAM_BOT_TOKEN=123456:ABC-DEF...   # Токен от @BotFather
 TELEGRAM_CHAT_ID=-100123456789         # Ваш Chat ID или ID группы
-TELEGRAM_MANAGER_USERNAME=dyman_kz     # Юзернейм менеджера для диалогов
+TELEGRAM_MANAGER_USERNAME=Dyman17     # Юзернейм менеджера для диалогов
 ```
 
 ---

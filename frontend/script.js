@@ -3,7 +3,7 @@ import { PROJECTS, CATEGORIES } from "./projects.js";
 // ─── Настройки студии ───────────────────────────────────────
 // WhatsApp: впишите номер в формате 77001234567, чтобы показать кнопку.
 const CONFIG = {
-  telegram: "dyman_kz",
+  telegram: "Dyman17",
   whatsapp: "",
   apiUrl: window.SHUAQ_API_URL || ""
 };

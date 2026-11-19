@@ -15,7 +15,7 @@ function initDB() {
         id: "SHQ-1001",
         createdAt: new Date().toISOString(),
         name: "Демо Заказчик",
-        telegram: "@dyman_kz",
+        telegram: "@Dyman17",
         serviceType: "Web & SaaS Платформа",
         description: "Разработка B2B платформы с личным кабинетом и Kaspi Pay",
         budget: "850 000 ₸",

@@ -2,7 +2,7 @@ const https = require("https");
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-const MANAGER_USERNAME = process.env.TELEGRAM_MANAGER_USERNAME || "dyman_kz";
+const MANAGER_USERNAME = process.env.TELEGRAM_MANAGER_USERNAME || "Dyman17";
 
 /**
  * Format order into a clean HTML message for Telegram
