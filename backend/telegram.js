@@ -12,6 +12,14 @@ function formatTelegramMessage(order) {
     ? order.telegram
     : `@${order.telegram}`;
 
+  const modulesLine = order.selectedModules && order.selectedModules.length
+    ? `\n🧩 <b>Выбранные модули:</b> ${escapeHtml(order.selectedModules.join(", "))}`
+    : "";
+
+  const estimateLine = order.estimatedPrice
+    ? `\n📊 <b>Расчёт калькулятора:</b> ${escapeHtml(order.estimatedPrice)}`
+    : "";
+
   return `
 ✨ <b>НОВАЯ ЗАЯВКА НА ПРОЕКТ · SHUAQ</b>
 ━━━━━━━━━━━━━━━━━━━━
@@ -19,9 +27,9 @@ function formatTelegramMessage(order) {
 📅 <b>Время:</b> ${new Date(order.createdAt).toLocaleString("ru-RU", { timeZone: "Asia/Almaty" })}
 
 👤 <b>Клиент:</b> ${escapeHtml(order.name)}
-💬 <b>Telegram:</b> ${escapeHtml(tgHandle)}
+💬 <b>Контакт:</b> ${escapeHtml(tgHandle)}
 🎯 <b>Тип проекта:</b> ${escapeHtml(order.serviceType)}
-💰 <b>Бюджет:</b> ${escapeHtml(order.budget)}
+💰 <b>Бюджет:</b> ${escapeHtml(order.budget)}${estimateLine}${modulesLine}
 ⏱ <b>Сроки:</b> ${escapeHtml(order.deadline)}
 
 📝 <b>Описание задачи:</b>

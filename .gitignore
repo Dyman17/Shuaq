@@ -21,6 +21,8 @@ desktop.ini
 # IDE & Editor files
 .vscode/
 .idea/
+.claude/
+.vercel/
 *.suo
 *.ntvs*
 *.njsproj

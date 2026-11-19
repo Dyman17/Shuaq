@@ -377,6 +377,50 @@ main { overflow-x: clip; }
 .step p { color: var(--ink-2); font-size: .96rem; }
 .step small { display: inline-block; margin-top: 14px; font-weight: 700; color: var(--ink-3); font-size: .82rem; }
 
+/* ─── Интерактивный калькулятор архитектуры ─── */
+.calculator-section { padding-top: 10px; }
+.calc-wrap { padding: clamp(24px, 4vw, 40px); border-radius: var(--r-lg); margin-top: 10px; }
+.calc-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; margin-bottom: 24px; }
+.calc-step { display: flex; flex-direction: column; gap: 14px; }
+.calc-step__badge { display: inline-flex; width: fit-content; padding: 4px 12px; border-radius: 99px; background: var(--bg-2); color: var(--ink-2); font-family: var(--f-display); font-weight: 800; font-size: .8rem; }
+.calc-step h3 { font-size: 1.25rem; font-weight: 900; }
+.calc-types { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.calc-card { position: relative; display: flex; flex-direction: column; padding: 18px 16px; border-radius: 20px; background: rgba(255,255,255,.75); border: 2px solid transparent; cursor: pointer; transition: all .3s var(--spring); }
+.calc-card input { position: absolute; opacity: 0; pointer-events: none; }
+.calc-card:hover { background: #fff; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.calc-card.is-active { border-color: var(--sky-d); background: #fff; box-shadow: 0 10px 28px -10px rgba(91,141,255,.35); }
+.calc-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.calc-card__price { font-family: var(--f-display); font-weight: 800; font-size: .86rem; color: var(--sky-d); }
+.calc-card b { font-family: var(--f-display); font-size: 1.02rem; font-weight: 800; line-height: 1.25; margin-bottom: 6px; }
+.calc-card p { font-size: .84rem; color: var(--ink-2); line-height: 1.4; flex: 1; margin-bottom: 10px; }
+.calc-card small { font-weight: 700; color: var(--ink-3); font-size: .78rem; }
+
+.calc-modules { display: grid; gap: 10px; }
+.calc-mod { position: relative; display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 18px; background: rgba(255,255,255,.75); border: 1.5px solid transparent; cursor: pointer; transition: all .25s var(--ease); }
+.calc-mod input { position: absolute; opacity: 0; pointer-events: none; }
+.calc-mod:hover { background: #fff; border-color: var(--line); }
+.calc-mod.is-checked { background: #fff; border-color: var(--mint-d); box-shadow: 0 4px 16px -6px rgba(45,190,140,.25); }
+.calc-mod__check { width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--line); background: var(--bg-2); display: grid; place-items: center; flex: none; transition: all .2s; }
+.calc-mod.is-checked .calc-mod__check { background: var(--mint-d); border-color: var(--mint-d); }
+.calc-mod.is-checked .calc-mod__check::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-top: -2px; }
+.calc-mod div { flex: 1; }
+.calc-mod b { display: block; font-size: .92rem; font-weight: 800; color: var(--ink); line-height: 1.3; }
+.calc-mod p { font-size: .8rem; color: var(--ink-3); line-height: 1.35; margin-top: 2px; }
+.calc-mod__cost { font-family: var(--f-display); font-weight: 800; font-size: .86rem; color: var(--ink-2); white-space: nowrap; }
+
+.calc-summary { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 20px 24px; border-radius: 24px; background: rgba(255,255,255,.9); border: 1px solid #fff; box-shadow: var(--shadow); }
+.calc-summary__item { display: flex; flex-direction: column; gap: 4px; }
+.calc-summary__item span { font-size: .82rem; font-weight: 700; color: var(--ink-3); }
+.calc-summary__total { font-family: var(--f-display); font-size: 1.75rem; font-weight: 900; color: var(--ink); letter-spacing: -.02em; }
+.calc-summary__item b { font-family: var(--f-display); font-size: 1.15rem; font-weight: 800; }
+.calc-summary__item--stack { max-width: 340px; }
+
+/* ─── Гарантии ─── */
+.guarantees { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.guarantee-card { padding: 22px; border-radius: var(--r); display: flex; flex-direction: column; gap: 10px; }
+.guarantee-card b { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+.guarantee-card p { font-size: .88rem; color: var(--ink-2); line-height: 1.45; }
+
 /* ─── Цены ─── */
 .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
 .plan { position: relative; display: flex; flex-direction: column; padding: 28px 24px; border-radius: var(--r-lg); background: rgba(255,255,255,.72); border: 1px solid var(--glass-line); box-shadow: var(--shadow); backdrop-filter: blur(14px); }
@@ -481,6 +525,8 @@ main { overflow-x: clip; }
   .plan--hot { transform: none; }
   .work { grid-template-columns: repeat(2, 1fr); }
   .horeca__stats { grid-template-columns: repeat(2, 1fr); }
+  .guarantees { grid-template-columns: repeat(2, 1fr); }
+  .calc-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 920px) {
   .nav__links, .nav__cta { display: none; }
@@ -510,7 +556,12 @@ main { overflow-x: clip; }
   .hero__float b { font-size: .85rem; } .hero__float small { font-size: .72rem; }
   .hero__proof b { font-size: 1.5rem; }
   .hero__actions .btn { flex: 1 1 100%; }
-  .services, .process, .plans, .work { grid-template-columns: 1fr; }
+  .services, .process, .plans, .work, .guarantees { grid-template-columns: 1fr; }
+  .calc-types { grid-template-columns: 1fr; }
+  .calc-wrap { padding: 18px 14px; border-radius: 22px; }
+  .calc-summary { flex-direction: column; align-items: stretch; text-align: center; }
+  .calc-summary__item--stack { max-width: none; }
+  .calc-summary .btn { width: 100%; }
   .svc--wide, .svc--half { grid-column: auto; }
   .svc--wide { padding: 24px; }
   .svc--wide h3 { font-size: 1.7rem; }

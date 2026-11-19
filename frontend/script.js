@@ -299,6 +299,156 @@ else {
   chatIO.observe(chat);
 }
 
+// ─── Интерактивный калькулятор архитектуры ────────────────
+const CALC_CONFIG = {
+  types: {
+    saas: {
+      name: "Web & SaaS Платформа",
+      basePrice: 850000,
+      baseDays: 16,
+      formService: "Web & SaaS Платформа",
+      stack: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"]
+    },
+    ai: {
+      name: "AI & Automation Suite",
+      basePrice: 650000,
+      baseDays: 10,
+      formService: "AI & Automation Suite",
+      stack: ["Python", "OpenAI", "RAG", "Telegram API", "WhatsApp"]
+    },
+    portal: {
+      name: "Digital Foundation",
+      basePrice: 450000,
+      baseDays: 8,
+      formService: "Digital Foundation",
+      stack: ["Astro", "React", "TypeScript", "SEO", "Tailwind"]
+    },
+    edge: {
+      name: "Enterprise & Custom SaaS",
+      basePrice: 1400000,
+      baseDays: 24,
+      formService: "Enterprise & Custom SaaS",
+      stack: ["YOLOv8", "ESP32", "Python", "React", "WebSockets"]
+    }
+  },
+  modules: {
+    kaspi: { name: "Kaspi Pay & QR", price: 80000, days: 2, tag: "Kaspi Pay" },
+    whatsapp: { name: "WhatsApp Cloud Business", price: 90000, days: 3, tag: "WhatsApp API" },
+    rag: { name: "AI База знаний (RAG)", price: 120000, days: 4, tag: "Vector RAG" },
+    roles: { name: "Личные кабинеты и роли", price: 110000, days: 4, tag: "RBAC & JWT" },
+    care: { name: "Пакет Shuaq Care SLA", price: 65000, days: 0, tag: "SLA 99.9%" }
+  }
+};
+
+const calcTypesEl = $("#calcTypes");
+const calcModulesEl = $("#calcModules");
+const calcTotalEl = $("#calcTotal");
+const calcTimeEl = $("#calcTime");
+const calcStackEl = $("#calcStack");
+const applyCalcBtn = $("#applyCalcBtn");
+
+function updateCalculator() {
+  if (!calcTypesEl || !calcModulesEl) return;
+  const selectedType = $('input[name="calcType"]:checked', calcTypesEl)?.value || "saas";
+  const typeData = CALC_CONFIG.types[selectedType] || CALC_CONFIG.types.saas;
+
+  // Update card active classes
+  $$(".calc-card", calcTypesEl).forEach((card) => {
+    const input = $("input", card);
+    card.classList.toggle("is-active", input.checked);
+  });
+
+  let totalPrice = typeData.basePrice;
+  let totalDays = typeData.baseDays;
+  const currentStack = [...typeData.stack];
+  const selectedModuleNames = [];
+
+  $$(".calc-mod", calcModulesEl).forEach((mod) => {
+    const input = $("input", mod);
+    mod.classList.toggle("is-checked", input.checked);
+    if (input.checked) {
+      const modData = CALC_CONFIG.modules[input.value];
+      if (modData) {
+        if (!input.dataset.care) {
+          totalPrice += modData.price;
+        }
+        totalDays += modData.days;
+        if (!currentStack.includes(modData.tag)) {
+          currentStack.push(modData.tag);
+        }
+        selectedModuleNames.push(modData.name);
+      }
+    }
+  });
+
+  const formattedPrice = totalPrice.toLocaleString("ru-RU") + " ₸";
+  const careChecked = $('input[data-care]:checked', calcModulesEl);
+  calcTotalEl.textContent = careChecked ? `${formattedPrice} + ${CALC_CONFIG.modules.care.price.toLocaleString("ru-RU")} ₸/мес` : formattedPrice;
+  calcTimeEl.textContent = `${totalDays}–${Math.round(totalDays * 1.35)} рабочих дней`;
+  calcStackEl.innerHTML = currentStack.slice(0, 5).map((t) => `<li>${t}</li>`).join("");
+
+  return {
+    selectedType,
+    typeData,
+    totalPrice: formattedPrice,
+    totalDays,
+    currentStack,
+    selectedModuleNames
+  };
+}
+
+if (calcTypesEl && calcModulesEl) {
+  calcTypesEl.addEventListener("change", updateCalculator);
+  calcModulesEl.addEventListener("change", updateCalculator);
+  updateCalculator();
+}
+
+if (applyCalcBtn) {
+  applyCalcBtn.addEventListener("click", () => {
+    const calcState = updateCalculator();
+    if (!calcState) return;
+
+    // 1. Предвыбор радио-кнопки типа услуги в форме
+    const serviceRadio = $(`#serviceChoice input[value="${calcState.typeData.formService}"]`);
+    if (serviceRadio) serviceRadio.checked = true;
+
+    // 2. Бюджет
+    const formBudget = $("#formBudget");
+    if (formBudget) {
+      if (calcState.totalPrice.includes("450") || calcState.totalPrice.includes("500")) {
+        formBudget.value = "До 500 000 ₸";
+      } else if (calcState.totalPrice.includes("650") || calcState.totalPrice.includes("850") || calcState.totalPrice.includes("1 020")) {
+        formBudget.value = "500 000 – 1 000 000 ₸";
+      } else {
+        formBudget.value = "1 000 000 – 2 000 000 ₸";
+      }
+    }
+
+    // 3. Подстановка описания и модулей
+    const formDesc = $("#formDesc");
+    if (formDesc) {
+      formDesc.value = `Сконфигурировано в калькуляторе Shuaq:\n• Продукт: ${calcState.typeData.name}\n• Выбранные модули: ${calcState.selectedModuleNames.join(", ") || "Базовый состав"}\n• Ориентир сметы: ${calcState.totalPrice}\n• Срок: ${calcState.totalDays} дней`;
+    }
+
+    // 4. Скрытое поле с точной сметой
+    const formEstimatedPrice = $("#formEstimatedPrice");
+    if (formEstimatedPrice) {
+      formEstimatedPrice.value = calcState.totalPrice;
+    }
+
+    // 5. Плавный скролл к форме
+    const contactSection = $("#contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+      const orderCard = $(".contact__card");
+      if (orderCard) {
+        orderCard.style.outline = "3px solid var(--sky-d)";
+        setTimeout(() => (orderCard.style.outline = ""), 1600);
+      }
+    }
+  });
+}
+
 // ─── Предвыбор услуги по кнопкам «Выбрать» ──────────────────
 document.addEventListener("click", (e) => {
   const a = e.target.closest("[data-service]");
@@ -308,11 +458,11 @@ document.addEventListener("click", (e) => {
 });
 
 // ─── WhatsApp ───────────────────────────────────────────────
-if (CONFIG.whatsapp) {
-  const wa = $("#waLink");
-  wa.href = `https://wa.me/${CONFIG.whatsapp}`;
-  $("#waText").textContent = `+${CONFIG.whatsapp}`;
-  wa.hidden = false;
+const wa = $("#waLink");
+if (wa) {
+  const waPhone = CONFIG.whatsapp || "77071234567";
+  const waMsg = encodeURIComponent("Здравствуйте! Хочу обсудить проект со студией Shuaq.");
+  wa.href = `https://wa.me/${waPhone}?text=${waMsg}`;
 }
 
 // ─── Форма заявки ───────────────────────────────────────────
@@ -335,7 +485,7 @@ form.addEventListener("submit", async (e) => {
     if (!v) missing.push(el);
   });
   if (missing.length) {
-    formError.textContent = "Укажите имя и контакт для связи";
+    formError.textContent = "Укажите имя и контакт (Telegram / WhatsApp) для связи";
     missing[0].focus();
     return;
   }
@@ -343,7 +493,17 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   $(".btn__text", submitBtn).textContent = "Отправляем…";
 
-  const brief = `Заявка с сайта Shuaq\nИмя: ${data.name}\nКонтакт: ${data.telegram}\nУслуга: ${data.serviceType}\nБюджет: ${data.budget}\nСроки: ${data.deadline}\nЗадача: ${data.description || "—"}`;
+  // Сбор выбранных модулей из калькулятора, если они были отмечены
+  const selectedModules = [];
+  if (calcModulesEl) {
+    $$('input[type="checkbox"]:checked', calcModulesEl).forEach((cb) => {
+      const m = CALC_CONFIG.modules[cb.value];
+      if (m) selectedModules.push(m.name);
+    });
+  }
+  data.selectedModules = selectedModules;
+
+  const brief = `Заявка со студии Shuaq\nИмя: ${data.name}\nКонтакт: ${data.telegram}\nНаправление: ${data.serviceType}\nБюджет: ${data.budget}\nСроки: ${data.deadline}\nРасчёт: ${data.estimatedPrice || "Индивидуальный"}\nЗадача:\n${data.description || "—"}`;
   let orderId = "SHQ-" + Math.floor(1000 + Math.random() * 9000);
   let followLink = `https://t.me/${CONFIG.telegram}?text=${encodeURIComponent(brief)}`;
 
@@ -359,8 +519,7 @@ form.addEventListener("submit", async (e) => {
     orderId = json.order.id;
     if (json.telegramDeepLink) followLink = json.telegramDeepLink;
   } catch (err) {
-    // Сервер недоступен (например, статичный хостинг) — заявку можно отправить напрямую в Telegram.
-    console.warn("API заявок недоступен, используем Telegram:", err);
+    console.warn("API заявок недоступен, используем прямой диалог Telegram:", err);
   }
 
   $("#orderId").textContent = orderId;

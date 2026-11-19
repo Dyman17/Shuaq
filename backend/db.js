@@ -5,19 +5,36 @@ const DB_FILE = path.join(__dirname, "data", "orders.json");
 
 // Ensure DB file exists
 function initDB() {
-  if (!fs.existsSync(path.dirname(DB_FILE))) {
-    fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
+  const dir = path.dirname(DB_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
   if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify([], null, 2), "utf-8");
+    const initialOrders = [
+      {
+        id: "SHQ-1001",
+        createdAt: new Date().toISOString(),
+        name: "Демо Заказчик",
+        telegram: "@dyman_kz",
+        serviceType: "Web & SaaS Платформа",
+        description: "Разработка B2B платформы с личным кабинетом и Kaspi Pay",
+        budget: "850 000 ₸",
+        deadline: "В течение месяца",
+        status: "approved",
+        adminNotes: "Демонстрационный заказ",
+        selectedModules: ["Kaspi QR & Kaspi Pay", "AI База знаний (RAG)"],
+        estimatedPrice: "от 850 000 ₸"
+      }
+    ];
+    fs.writeFileSync(DB_FILE, JSON.stringify(initialOrders, null, 2), "utf8");
   }
 }
 
-// Read all orders
+// Read all orders safely
 function getOrders() {
   initDB();
   try {
-    const raw = fs.readFileSync(DB_FILE, "utf-8");
+    const raw = fs.readFileSync(DB_FILE, "utf8");
     return JSON.parse(raw || "[]");
   } catch (err) {
     console.error("DB Read Error:", err);
@@ -25,10 +42,21 @@ function getOrders() {
   }
 }
 
-// Save all orders
+// Atomic Safe Save (writes to temp file, then renames to avoid partial write corruption)
 function saveOrders(orders) {
   initDB();
-  fs.writeFileSync(DB_FILE, JSON.stringify(orders, null, 2), "utf-8");
+  const tempFile = `${DB_FILE}.tmp.${Date.now()}`;
+  try {
+    fs.writeFileSync(tempFile, JSON.stringify(orders, null, 2), "utf8");
+    fs.renameSync(tempFile, DB_FILE);
+  } catch (err) {
+    console.error("DB Write Error:", err);
+    if (fs.existsSync(tempFile)) {
+      try {
+        fs.unlinkSync(tempFile);
+      } catch (e) {}
+    }
+  }
 }
 
 // Generate new ID
@@ -43,12 +71,14 @@ function createOrder(orderData) {
   const newOrder = {
     id: generateOrderId(orders),
     createdAt: new Date().toISOString(),
-    name: orderData.name?.trim() || "Аноним",
-    telegram: orderData.telegram?.trim() || "",
+    name: orderData.name || "Аноним",
+    telegram: orderData.telegram || "",
     serviceType: orderData.serviceType || "Web & SaaS",
-    description: orderData.description?.trim() || "",
+    description: orderData.description || "",
     budget: orderData.budget || "Договорной",
-    deadline: orderData.deadline || "Не срочно",
+    deadline: orderData.deadline || "В течение месяца",
+    estimatedPrice: orderData.estimatedPrice || "",
+    selectedModules: orderData.selectedModules || [],
     status: "new", // new | in_review | approved | in_progress | completed | rejected
     adminNotes: ""
   };
@@ -64,7 +94,7 @@ function updateOrder(id, updates) {
   const index = orders.findIndex((o) => o.id === id);
   if (index === -1) return null;
 
-  const allowedFields = ["status", "adminNotes", "budget", "deadline"];
+  const allowedFields = ["status", "adminNotes", "budget", "deadline", "estimatedPrice"];
   for (const field of allowedFields) {
     if (updates[field] !== undefined) {
       orders[index][field] = updates[field];

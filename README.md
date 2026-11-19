@@ -146,6 +146,7 @@ node server.js
 В файле `backend/.env` укажите:
 ```ini
 PORT=3000
+ADMIN_API_KEY=shuaq_admin_secret_key_2026 # Секретный ключ для доступа к базе заказов
 TELEGRAM_BOT_TOKEN=123456:ABC-DEF...   # Токен от @BotFather
 TELEGRAM_CHAT_ID=-100123456789         # Ваш Chat ID или ID группы
 TELEGRAM_MANAGER_USERNAME=dyman_kz     # Юзернейм менеджера для диалогов
@@ -155,13 +156,13 @@ TELEGRAM_MANAGER_USERNAME=dyman_kz     # Юзернейм менеджера д�
 
 ## 🛠 REST API эндпоинты
 
-| Метод | Эндпоинт | Описание |
-| :--- | :--- | :--- |
-| `POST` | `/api/orders` | Создание новой заявки с сайта и отправка в Telegram |
-| `GET` | `/api/orders` | Просмотр всех заказов (фильтр: `?status=new\|approved`) |
-| `GET` | `/api/orders/:id` | Просмотр одного заказа по ID (`SHQ-1001`) |
-| `PATCH` | `/api/orders/:id` | Согласование заказа (обновление статуса и заметок) |
-| `GET` | `/api/health` | Проверка работоспособности сервера |
+| Метод | Эндпоинт | Авторизация | Описание |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/orders` | Публичный (Rate Limit) | Создание новой заявки с сайта, санитизация и отправка в Telegram |
+| `GET` | `/api/orders` | `x-admin-key` | Защищенный просмотр всех заказов (фильтр: `?status=new\|approved`) |
+| `GET` | `/api/orders/:id` | `x-admin-key` | Просмотр одного заказа по ID (`SHQ-1001`) |
+| `PATCH` | `/api/orders/:id` | `x-admin-key` | Согласование заказа (обновление статуса, заметок и сметы) |
+| `GET` | `/api/health` | Публичный | Проверка работоспособности сервиса |
 
 ---
 

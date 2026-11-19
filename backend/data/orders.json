@@ -1,15 +1,35 @@
 [
   {
+    "id": "SHQ-1002",
+    "createdAt": "2026-11-18T03:55:08.052Z",
+    "name": "Тест Заказчик",
+    "telegram": "@test_user",
+    "serviceType": "Web & SaaS Платформа",
+    "description": "",
+    "budget": "850 000 ₸",
+    "deadline": "В течение месяца",
+    "estimatedPrice": "",
+    "selectedModules": [
+      "Kaspi Pay & QR"
+    ],
+    "status": "new",
+    "adminNotes": ""
+  },
+  {
     "id": "SHQ-1001",
-    "createdAt": "2026-09-08T19:52:18.472Z",
-    "name": "???????? ??????",
-    "telegram": "@test_client",
-    "serviceType": "Web & SaaS",
-    "description": "????? SaaS ??????? ? AI ??????????",
-    "budget": "350 000? - 700 000?",
-    "deadline": "2-3 ??????",
+    "createdAt": "2026-11-18T08:45:00.000Z",
+    "name": "Айдар Сериков",
+    "telegram": "@aidar_serik",
+    "serviceType": "Web & SaaS Платформа",
+    "description": "Разработка логистического портала с ролями и интеграцией Kaspi Pay",
+    "budget": "850 000 – 1 800 000 ₸",
+    "deadline": "В течение месяца",
     "status": "approved",
-    "adminNotes": "???????????, ????? ? ??????",
-    "updatedAt": "2026-09-08T19:52:23.016Z"
+    "adminNotes": "Согласовано ТЗ, предоплата получена",
+    "selectedModules": [
+      "Kaspi QR & Kaspi Pay",
+      "AI База знаний (RAG)"
+    ],
+    "estimatedPrice": "от 850 000 ₸"
   }
 ]

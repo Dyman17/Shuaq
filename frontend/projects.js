@@ -271,9 +271,9 @@ export const PROJECTS = [
 ];
 
 export const CATEGORIES = [
-  { id: "all", label: "Все" },
-  { id: "web", label: "Сайты и сервисы" },
-  { id: "bots", label: "Боты" },
-  { id: "ai", label: "AI и автоматизация" },
-  { id: "iot", label: "IoT и железо" }
+  { id: "all", label: "Все системы" },
+  { id: "web", label: "Web & SaaS" },
+  { id: "ai", label: "AI & Автоматизация" },
+  { id: "iot", label: "IoT & Hardware" },
+  { id: "bots", label: "Экосистемы TG/WA" }
 ];
