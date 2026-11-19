@@ -4,6 +4,6 @@
   "cleanUrls": true,
   "framework": null,
   "rewrites": [
-    { "source": "/brief", "destination": "/order.html" }
+    { "source": "/brief", "destination": "/order" }
   ]
 }
